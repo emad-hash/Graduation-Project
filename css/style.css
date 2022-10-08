@@ -10,7 +10,7 @@
 }
 
 body{
-    background: #000116;
+    
     height: 1020vh;
 }
 
@@ -23,21 +23,20 @@ header{
 
 header .nav-bar{
     position: relative;
-    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     height: 4em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+   
     top: 0;
     left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 150px;
+    padding: 0 80px;
     transition: 0.5s ease;
 }
 
 .nav-bar .logo{
-    color: #fff;
+    color: black;
     font-size: 1.8em;
     font-weight: 600;
     letter-spacing: 2px;
@@ -51,19 +50,20 @@ header .nav-bar{
 }
 .navbar a i {
  font-size: 30px;
+ color: black;
 }
 .navigation{
     width: 100%;
     height: 50px;
-    background-color: blue;
+    background-color:#eef1f4;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 .navigation .nav-items a{
-    color: #fff;
-    font-size: 1em;
+    color: black;
+    font-size: .9rem ;
     text-decoration: none;
     margin: 10px;
 }
@@ -75,18 +75,7 @@ header .nav-bar{
 }
 
 
-/*======= Content section =======*/
-.content h1{
-    color: #fff;
-    font-size: 3.5em;
-    font-weight: 600;
-}
 
-.content p{
-    color: #fff;
-    font-size: 1em;
-    margin: 30px 0;
-}
 
 /*======= Scroll bar =======*/
 ::-webkit-scrollbar{
@@ -96,7 +85,7 @@ header .nav-bar{
 }
 
 ::-webkit-scrollbar-thumb{
-    background: #282f4e;
+    background: blue;
     width: 100%;
     border-radius: 2em;
 }
@@ -149,7 +138,7 @@ header .nav-bar{
     /*======= Navigation menu =======*/
     .nav-menu-btn{
         display: block;
-        color: #fff;
+        color: black;
         font-size: 1.5em;
         cursor: pointer;
     }
@@ -219,5 +208,17 @@ header .nav-bar{
         font-size: 1.3em;
         margin: 10px;
         cursor: pointer;
+    }
+}@media screen and (max-width: 375px){
+    .navigation .nav-items{
+       width: 100%;
+       height: 600px;
+       overflow: visible;
+       margin: 20px;
+       padding: 0;
+    }
+    .navigation .nav-items a{
+        padding: 0px;
+        margin: 10px 0px;
     }
 }
