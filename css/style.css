@@ -10,14 +10,17 @@
 }
 
 body{
+height: 1000vh;
+    width: 100%;
     
-    height: 1020vh;
 }
 
 /*======= Header navigation bar =======*/
 header{
     z-index: 999;
-    position: fixed;
+    position: sticky;
+    top: 0;
+    background-color: white;
     width: 100%;
 }
 
@@ -75,8 +78,38 @@ header .nav-bar{
 }
 
 
+.backg {
+width: 100%;
+/* height: 500px;
+background: url(../img/emad124.png) ;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat; */
 
+}
 
+.backg .card0 {
+    background-color: rgba(255, 255, 255, 0.096);
+    backdrop-filter: blur(6px);
+    border-radius: 15px;
+    height: auto;
+    position: absolute;
+    top: 600px;
+    left: 25%;
+}
+.backg  h1{
+    padding: 10px;
+    color: white;
+}
+.backg   h1 span{
+    color: black;
+}
+/* .backg .png1{
+    width: 400px;
+    height: 400px;
+    margin-top: 50px;
+    margin-left: 500px;
+} */
 /*======= Scroll bar =======*/
 ::-webkit-scrollbar{
     background: #fff;
@@ -209,7 +242,15 @@ header .nav-bar{
         margin: 10px;
         cursor: pointer;
     }
-}@media screen and (max-width: 380px){
+    .backg .card0 {
+        position: absolute;
+        top: 450px;
+        left: 0;
+        margin: 10px;
+        padding: 5px;
+    }
+}
+@media screen and (max-width: 380px){
     .navigation .nav-items{
        width: 100%;
        height: 600px;
@@ -220,5 +261,20 @@ header .nav-bar{
     .navigation .nav-items a{
         padding: 0px;
         margin: 10px 0px;
+    }
+    .backg h1{
+        font-size: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .backg {
+        background: none;
+    }
+    .backg .card0 {
+        position: absolute;
+        top: 500px;
+        left: 0;
+        margin: 10px;
+        padding: 10px;
     }
 }
