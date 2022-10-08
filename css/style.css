@@ -57,7 +57,7 @@ header .nav-bar{
 }
 .navigation{
     width: 100%;
-    height: 50px;
+    height: 80px;
     background-color:#eef1f4;
     display: flex;
     justify-content: center;
@@ -68,7 +68,7 @@ header .nav-bar{
     color: black;
     font-size: .9rem ;
     text-decoration: none;
-    margin: 10px;
+    margin: 15px;
 }
 
 
@@ -146,27 +146,43 @@ background-repeat: no-repeat; */
 }
 
 /*======= Media queries (max-width: 1100px) =======*/
-@media screen and (max-width: 1100px){
-    header .nav-bar{
-        padding: 0 50px;
+@media screen and (max-width: 1300px){
+    .navigation .nav-items a{
+       text-align: center;
+      
+       padding: 0;
     }
-
-    section{
-        padding: 30px 50px;
-        font-size: 0.9em;
+    .backg .card0 {
+        position: absolute;
+        top: 600px;
+        left: 10%;
+        margin: 10px;
+        padding: 5px;
     }
+  
+  
 }
-
+@media screen and (max-width: 1080px){
+    .navigation .nav-items a{
+       text-align: center;
+       padding: 0;
+    }
+    .backg .card0 {
+        position: absolute;
+        top: 600px;
+        left: 10%;
+        margin: 10px;
+        padding: 5px;
+    }
+  
+}
 /*======= Media queries (max-width: 850px) =======*/
 @media screen and (max-width: 850px) {
     header .nav-bar {
         padding: 0 20px;
     }
 
-    section {
-        padding: 30px 20px;
-        font-size: 0.8em;
-    }
+  
 
     /*======= Navigation menu =======*/
     .nav-menu-btn{
