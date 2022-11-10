@@ -7242,11 +7242,11 @@ span.fi-rs-apps {
   margin: 0;
   margin-top: 0px;
   border: 1px solid #eef0ee;
-  min-width: 800px;
+  min-width: 180px;
   width: 100%;
   right: 0;
   border-radius: 0;
-  padding: 20px;
+  padding: 10px;
 }
 
 .categori-dropdown-wrap ul li.has-children .dropdown-menu .submenu-title {
@@ -7254,7 +7254,7 @@ span.fi-rs-apps {
   font-weight: 500;
   display: block;
   color: #F15412;
-  padding: 5px 34px;
+  padding: 5px 20px;
 }
 
 .categori-dropdown-wrap ul li.has-children .dropdown-menu .header-banner2 {
