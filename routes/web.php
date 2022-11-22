@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Livewire\HomeCompo;
+use App\Http\Livewire\CartComponent;
+use App\Http\Livewire\ShopComponent;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\CheckoutComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +22,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/',HomeCompo::class)->name('home.index');
+
+Route::get('/shop',ShopComponent::class)->name('shop');
+
+Route::get('/cart',CartComponent::class)->name('cart.shop');
+
+Route::get('/checkout',CheckoutComponent::class)->name('checkout');
+
