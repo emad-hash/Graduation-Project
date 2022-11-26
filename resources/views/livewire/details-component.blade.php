@@ -321,13 +321,14 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="row related-products">
+                                        @foreach ($rproducts as $rproduct )
+                                            
                                         <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                             <div class="product-cart-wrap small hover-up">
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
-                                                        <a href="product-details.html" tabindex="0"><img
-                                                                class="default-img"
-                                                                src="{{ asset('assets/imgs/shop/product-1-1.jpg')}}" alt=""></a>
+                                    <a href="{{route('product.details',['slug'=>$rproduct->slug])}}" tabindex="0"><img
+                                    class="default-img" src="{{ asset('assets/imgs/shop/product-')}}{{$rproduct->id}}-1.jpg" alt=""></a>
                                                     </div>
                                                     <div class="product-action-1">
                                                         <a aria-label="Quick view" class="action-btn small hover-up"
@@ -346,130 +347,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="product-details.html" tabindex="0">Wooden plaque with
-                                                            an Islamic drawing design</a></h2>
+                                <h2><a href="{{route('product.details',['slug'=>$rproduct->slug])}}" tabindex="0">{{$rproduct->name}}</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span></span>
                                                     </div>
                                                     <div class="product-price">
-                                                        <span>32 JD </span>
-                                                        <span class="old-price">46 JD</span>
+                                                        <span>{{$rproduct->regular_price}} JD </span>
+                                                        {{-- <span class="old-price">46 JD</span> --}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                            <div class="product-cart-wrap small hover-up">
-                                                <div class="product-img-action-wrap">
-                                                    <div class="product-img product-img-zoom">
-                                                        <a href="product-details.html" tabindex="0"><img
-                                                                class="default-img"
-                                                                src="{{ asset('assets/imgs/shop/product-3-1.jpg')}}" alt=""></a>
-                                                    </div>
-                                                    <div class="product-action-1">
-                                                        <a aria-label="Quick view" class="action-btn small hover-up"
-                                                            data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                                class="fi-rs-search"></i></a>
-                                                        <a aria-label="Add To Wishlist"
-                                                            class="action-btn small hover-up" href="wishlist.php"
-                                                            tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                        <a aria-label="Compare" class="action-btn small hover-up"
-                                                            href="compare.php" tabindex="0"><i
-                                                                class="fi-rs-shuffle"></i></a>
-                                                    </div>
-                                                    <div
-                                                        class="product-badges product-badges-position product-badges-mrg">
-                                                        <span class="sale">-12%</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content-wrap">
-                                                    <h2><a href="product-details.html" tabindex="0">Wooden board with a
-                                                            women's design</a></h2>
-                                                    <div class="rating-result" title="90%">
-                                                        <span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <span>15 JD </span>
-                                                        <span class="old-price">29 JD </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                            <div class="product-cart-wrap small hover-up">
-                                                <div class="product-img-action-wrap">
-                                                    <div class="product-img product-img-zoom">
-                                                        <a href="product-details.html" tabindex="0"><img
-                                                                class="default-img"
-                                                                src="{{ asset('assets/imgs/shop/product-4-1.jpg')}}" alt=""></a>
-                                                    </div>
-                                                    <div class="product-action-1">
-                                                        <a aria-label="Quick view" class="action-btn small hover-up"
-                                                            data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                                class="fi-rs-search"></i></a>
-                                                        <a aria-label="Add To Wishlist"
-                                                            class="action-btn small hover-up" href="wishlist.php"
-                                                            tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                        <a aria-label="Compare" class="action-btn small hover-up"
-                                                            href="compare.php" tabindex="0"><i
-                                                                class="fi-rs-shuffle"></i></a>
-                                                    </div>
-                                                    <div
-                                                        class="product-badges product-badges-position product-badges-mrg">
-                                                        <span class="new">New</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content-wrap">
-                                                    <h2><a href="product-details.html" tabindex="0">Wooden Decorative
-                                                            Painting Abstract Design</a></h2>
-                                                    <div class="rating-result" title="90%">
-                                                        <span></span>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <span>34 JD </span>
-                                                        <span class="old-price">45 JD</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                            <div class="product-cart-wrap small hover-up mb-0">
-                                                <div class="product-img-action-wrap">
-                                                    <div class="product-img product-img-zoom">
-                                                        <a href="product-details.html" tabindex="0"><img
-                                                                class="default-img"
-                                                                src="{{ asset('assets/imgs/shop/product-5-1.jpg')}}" alt=""></a>
-                                                    </div>
-                                                    <div class="product-action-1">
-                                                        <a aria-label="Quick view" class="action-btn small hover-up"
-                                                            data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                                class="fi-rs-search"></i></a>
-                                                        <a aria-label="Add To Wishlist"
-                                                            class="action-btn small hover-up" href="wishlist.php"
-                                                            tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                        <a aria-label="Compare" class="action-btn small hover-up"
-                                                            href="compare.php" tabindex="0"><i
-                                                                class="fi-rs-shuffle"></i></a>
-                                                    </div>
-                                                    <div
-                                                        class="product-badges product-badges-position product-badges-mrg">
-                                                        <span class="hot">Hot</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content-wrap">
-                                                    <h2><a href="product-details.html" tabindex="0">Islamic Canvas
-                                                            Painting Two Pieces With Subhan Allah Design</a></h2>
-                                                    <div class="rating-result" title="90%"><span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <span>28 JD </span>
-                                                        <span class="old-price">38 JD </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+
                                     </div>
                                 </div>
                             </div>
@@ -534,42 +424,20 @@
                                 <h5 class="widget-title mb-10">New products</h5>
                                 <div class="bt-1 border-color-1"></div>
                             </div>
+                            @foreach ($nproducts as $nproduct )
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="{{ asset('assets/imgs/shop/WATCHES-1-1.jpg')}}" alt="#">
+                                    <img src="{{ asset('assets/imgs/shop/product-')}}{{$nproduct->id}}-1.jpg" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h5><a href="product-details.html">Wooden wall clock</a></h5>
-                                    <p class="price mb-0 mt-5">10 JD</p>
+                                    <h5><a href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h5>
+                                    <p class="price mb-0 mt-5">{{$nproduct->regular_price}} JD</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="{{ asset('assets/imgs/shop/WATCHES-2-1.jpg')}}" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="product-details.html">Acrylic wall clock</a></h6>
-                                    <p class="price mb-0 mt-5">10 JD</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="{{ asset('assets/imgs/shop/WATCHES-3-1.jpg')}}" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="product-details.html">Acrylic wall clock</a></h6>
-                                    <p class="price mb-0 mt-5"> 13 JD</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:60%"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
