@@ -77,13 +77,7 @@
 
                         <div class="header-action-right">
                             <div class="header-action-2">
-                                <div class="header-action-icon-2">
-                                    <a href="shop-wishlist.php">
-                                        <img class="svgInject" alt=""
-                                            src="assets/imgs/theme/icons/icon-heart.svg">
-                                        <span class="pro-count blue">4</span>
-                                    </a>
-                                </div>
+                                @livewire('wishlist-icon-component')
                                 @livewire('cart-icon-component')
                             </div>
                         </div>
@@ -226,9 +220,10 @@
                                         </ul>
                                     </li>
                                     <li><a href="contact.html">Contact</a></li>
+                                    @auth
+                                    @if(Auth::user()->utype == 'ADM')
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
-                                        @auth
-                                        @if(Auth::user()->utype == 'ADM')
+                                       
                                         <ul class="sub-menu">
                                             <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
                                             <li><a href="#">Products</a></li>

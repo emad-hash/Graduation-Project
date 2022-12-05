@@ -18,8 +18,9 @@ class ShopComponent extends Component
      public $max_value = 500;
 
     public function store($product_id,$product_name,$product_price){
-        Cart::add($product_id,$product_name,1,$product_price)->associate('\App\Models\Product');
+        Cart::instance('cart')->add($product_id,$product_name,1,$product_price)->associate('\App\Models\Product');
         session()->flash('success_message','Item added in Cart');
+        $this->emitTo('cart-icon-component','refreshComponent');
         return redirect()->route('shop.cart');
     }
 
@@ -28,6 +29,19 @@ class ShopComponent extends Component
     }
     public function changeOrderBy($order){
         $this->orderBy = $order ;
+    }
+    public function AddToWishlist($product_id,$product_name,$product_price){
+        Cart::instance('Wishlist')->add($product_id,$product_name,1,$product_price)->associate('\App\Models\Product');
+        $this->emitTo('wishlist-icon-component', 'refreshComponent');
+    }
+    public function removeFromWishlist($product_id){
+        foreach(Cart::instance('Wishlist')->content() as $witem){
+            if($witem->id==$product_id){
+                Cart::instance('Wishlist')->remove($witem->rowId);
+                $this->emitTo('wishlist-icon-component', 'refreshComponent');
+                return;
+            }
+        }
     }
 
     public function render()

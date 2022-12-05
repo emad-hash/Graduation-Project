@@ -14,7 +14,8 @@ class CatrgoryComponent extends Component
     public $pageSize = 12 ;
     public $orderBy = "Default Sorting" ;
     public $slug;
-
+    public $min_value = 0;
+    public $max_value = 500;
 
     public function store($product_id,$product_name,$product_price){
         Cart::add($product_id,$product_name,1,$product_price)->associate('\App\Models\Product');
