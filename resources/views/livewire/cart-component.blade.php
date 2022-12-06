@@ -19,7 +19,7 @@
                                <strong>Success | {{Session::get('success_message')}}</strong>
                             </div>
                             @endif
-                            @if(Cart::count() > 0)
+                            @if(Cart::instance('cart')->count() > 0)
                             <table class="table shopping-summery text-center clean">
                                 <thead>
                                     <tr class="main-heading">
@@ -379,11 +379,11 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="cart_total_label">Cart Subtotal</td>
-                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">{{Cart::subtotal()}} JD</span></td>
+                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">{{Cart::instance('cart')->subtotal()}} JD</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Tax</td>
-                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">{{Cart::tax()}} JD</span></td>
+                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">{{Cart::instance('cart')->tax()}} JD</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Shipping</td>
@@ -391,7 +391,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">{{Cart::total()}} JD</span></strong></td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">{{Cart::instance('cart')->total()}} JD</span></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>

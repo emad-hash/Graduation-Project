@@ -93,23 +93,23 @@
         <div class="product-category">
           <a href="shop.html">MDF wood panels</a>
         </div>
-        <h2><a href="{{route('product.details',['slug'=>$product->slug])}}">{{ $product-> name}}</a></h2>
+        <h2><a href="{{route('product.details',['slug'=>$product->slug])}}">{{ $product->name}}</a></h2>
         <div class="rating-result" title="90%">
           <span>
             <span>90%</span>
           </span>
         </div>
         <div class="product-price">
-          <span>{{ $product-> regular_price}} JD</span>
+          <span>{{ $product->regular_price}} JD</span>
           {{-- < span class="old-price">29 JD</> --}}
       </div>
       <div class="product-action-1 show">
             @if ($witems->contains($product->id))
         <a aria-label="Remove From Wishlist" class="action-btn hover-up Wishlisted" href="#" wire:click.prevent="removeFromWishlist({{ $product->id}})"><i class="fi-rs-heart"></i></a>
         @else
-        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="AddToWishlist({{ $product-> id}}, '{{ $product-> name}}','{{ $product-> regular_price}}')"><i class="fi-rs-heart"></i></a>
+        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="AddToWishlist({{ $product->id}}, '{{ $product-> name}}','{{ $product-> regular_price}}')"><i class="fi-rs-heart"></i></a>
       @endif
-      <a aria-label="Add To Cart" class="action-btn hover-up" href="#" wire:click.prevent="store({{ $product-> id}},'{{ $product-> name}}',{{ $product-> regular_price}})" ><i class="fi-rs-shopping-bag-add"></i></a>
+      <a aria-label="Add To Cart" class="action-btn hover-up" href="#" wire:click.prevent="store({{$product->id}},'{{ $product->name}}',{{ $product->regular_price}})" ><i class="fi-rs-shopping-bag-add"></i></a>
 
   </div>
     </div >
