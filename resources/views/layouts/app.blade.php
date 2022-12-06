@@ -234,9 +234,8 @@
                                             <li><a href="#">Logout</a></li>
                                         </ul>
                                         @else
-                                        <ul class="sub-menu">
-                                            <li><a href="{{route('user.dashboard')}}">Dashboard</a></li>
-                                        </ul>
+                                            <li><a href="{{route('user.dashboard')}}">My Account</a></li>
+                                  
                                         @endif
                                         @endif
                                     </li>
