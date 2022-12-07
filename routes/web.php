@@ -8,8 +8,14 @@ use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\CatrgoryComponent;
 use App\Http\Livewire\CheckoutComponent;
+use App\Http\Livewire\WishlistComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\AdminCategoriesComponent;
+use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
+use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
+// use Illuminate\Routing\Exceptions\UrlGenerationException;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,11 +40,14 @@ Route::get('/product/{slug}',DetailsComponent::class)->name('product.details');
 
 Route::get('/cart',CartComponent::class)->name('shop.cart');
 
+Route::get('/wishlist',WishlistComponent::class)->name('shop.wishlist');
+
 Route::get('/checkout',CheckoutComponent::class)->name('checkout');
 
 Route::get('/product-category/{slug}',CatrgoryComponent::class)->name('product.category');
 
 Route::get('/search',SearchComponent::class)->name('product.search');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -55,6 +64,10 @@ Route::middleware(['auth'])->group(function(){
 });
 Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/categories',AdminCategoriesComponent::class)->name('admin.categories');
+    Route::get('/admin/category/add',AdminAddCategoriesComponent::class)->name('admin.category.add');
+    Route::get('/admin/category/edit/{category_id}',AdminEditCategoriesComponent::class)->name('admin.category.edit');
+
    });
 
 require __DIR__.'/auth.php';

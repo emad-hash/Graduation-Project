@@ -28,7 +28,7 @@
                 <li>
            <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
             <ul class="language-dropdown">
-             <li><a href="#"><img src="./assets/imgs/theme/555637.png" alt="">Arabic</a>
+             <li><a href="#"><img src="{{asset('assets/imgs/theme/555637.png')}}" alt="">Arabic</a>
             </ul>
             </li>
             </ul>
@@ -219,15 +219,15 @@
                                            
                                         </ul>
                                     </li>
+                                    
                                     <li><a href="contact.html">Contact</a></li>
                                     @auth
-                                    @if(Auth::user()->utype == 'ADM')
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
-                                       
+                                        @if(Auth::user()->utype == 'ADM')
                                         <ul class="sub-menu">
                                             <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
                                             <li><a href="#">Products</a></li>
-                                            <li><a href="#">Categories</a></li>
+                                            <li><a href="{{route('admin.categories')}}">Categories</a></li>
                                             <li><a href="#">Coupons</a></li>
                                             <li><a href="#">Orders</a></li>
                                             <li><a href="#">Customers</a></li>
@@ -237,8 +237,9 @@
                                             <li><a href="{{route('user.dashboard')}}">My Account</a></li>
                                   
                                         @endif
-                                        @endif
+                                      
                                     </li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div>

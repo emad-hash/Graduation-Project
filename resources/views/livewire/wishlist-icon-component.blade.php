@@ -1,5 +1,5 @@
 <div class="header-action-icon-2">
-    <a href="shop-wishlist.php">
+    <a href="{{route('shop.wishlist')}}">
         <img class="svgInject" alt="Wishlist"
             src="{{ asset('assets/imgs/theme/icons/icon-heart.svg')}}">
        @if (Cart::instance('Wishlist')->count() > 0)
