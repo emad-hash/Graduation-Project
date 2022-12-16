@@ -60,7 +60,7 @@ class AdminAddProductComponent extends Component
         $product->image = $imageName;
         $product->category_id = $this->category_id;
         $product->save();
-        session()->flash('message', 'Product has been created successfully !');
+        return redirect("/admin/products")->session()->flash('message', 'Product has been created successfully !');
     }
 
     public function render()
