@@ -28,8 +28,8 @@
                                         <strong class="text-brand">{{ $products-> total()}}</strong>
                                     </div>
                                     <div class="col-md-6">
-                                        {{-- <a href="{{route('admin.product.add')}}" class="btn btn-success float-end"> Add New Products
-                                        </a> --}}
+                                        <a href="{{route('admin.product.add')}}" class="btn btn-success float-end"> Add New Products
+                                        </a>
                                     </div>
                                   </div>
                             </div>
@@ -47,6 +47,7 @@
                                             <th>Price</th>
                                             <th>Catogory</th>
                                             <th>Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,16 +57,16 @@
                                         @foreach ($products as $product )
                                     <tr >
                                         <td>{{++$i}}</td>
-                                        <td><img src="{{ asset('assets/imgs/shop/product-')}}{{$product->id}}-1.jpg" width="150px"></td>
+                                        <td><img src="{{asset('assets/imgs/products')}}/{{$product->image}}" width="100px"></td>
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->stock_status}}</td>
                                         <td>{{$product->regular_price}}</td>
                                         <td>{{$product->category->name }}</td>
                                         <td>{{$product->created_at}}</td>
-                                        {{-- <td>
-                                        <a href="{{route('admin.product.edit',['product_id'=>$product->id])}}" class="text-info">Edit</a>
-                                    <a href="#" class="text-danger" onclick="deleteConfirmation({{$product->id}})"  style="margin-left: 20px">Delete</a>
-                                        </td> --}}
+                                        <td>
+                                        {{-- <a href="" class="text-info">Edit</a>
+                                    <a href="#" class="text-danger" "  style="margin-left: 20px">Delete</a> --}}
+                                        </td>
                                     </tr>
                                     @endforeach
                                     </tbody>

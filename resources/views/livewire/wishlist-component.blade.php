@@ -26,7 +26,7 @@
         <div class="product-img-action-wrap">
             <div class="product-img product-img-zoom">
                 <a href="{{route('product.details',['slug'=>$item->model->slug])}}">
-                    <img class="default-img" src="{{ asset('assets/imgs/shop/product-')}}{{$item->model->id}}-1.jpg" alt="">
+                    <img class="default-img" src="{{asset('assets/imgs/products')}}/{{$item->model->image}}" alt="">
 
                 </a>
             </div>

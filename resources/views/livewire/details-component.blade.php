@@ -20,7 +20,7 @@
                                         <!-- MAIN SLIDES -->
                                         <div class="product-image-slider">
                                             <figure class="border-radius-10">
-                                                <img src="{{ asset('assets/imgs/shop/product-')}}{{$product->id}}-1.jpg"" alt="product image">
+                                                <img src="{{asset('assets/imgs/products')}}/{{$product->image}}" alt="product image">
                                             </figure>
                                         </div>
                                         <!-- THUMBNAILS -->
@@ -328,7 +328,7 @@
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
                                     <a href="{{route('product.details',['slug'=>$rproduct->slug])}}" tabindex="0"><img
-                                    class="default-img" src="{{ asset('assets/imgs/shop/product-')}}{{$rproduct->id}}-1.jpg" alt=""></a>
+                                    class="default-img" src="{{asset('assets/imgs/products')}}/{{$rproduct->image}}"" alt=""></a>
                                                     </div>
                                                     <div class="product-action-1">
                                                         <a aria-label="Quick view" class="action-btn small hover-up"
@@ -427,7 +427,7 @@
                             @foreach ($nproducts as $nproduct )
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="{{ asset('assets/imgs/shop/product-')}}{{$nproduct->id}}-1.jpg" alt="#">
+                                    <img src="{{asset('assets/imgs/products')}}/{{$nproduct->image}}" alt="#">
                                 </div>
                                 <div class="content pt-10">
                                     <h5><a href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h5>
