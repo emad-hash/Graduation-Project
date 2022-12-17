@@ -1,65 +1,4 @@
-{{-- <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('Name')" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout> --}}
-
- <x-app-layout>
+<x-app-layout>
      
     <main class="main">
         <div class="page-header breadcrumb-wrap">
@@ -84,25 +23,31 @@
                                         <form method="POST" action="{{ route('register') }}">
                                             @csrf
                                             <div class="form-group">
-                                                <input type="text" required="" name="name" placeholder="Name" :value="old('name')" required autofocus autocomplete="name">
-                                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                                <input type="text"  name="name" placeholder="Name" :value="old('name')"  autofocus autocomplete="name">
+                                                @error('name')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" required="" name="email" placeholder="Email" :value="old('email')" required >
-                                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-
+                                                <input type="email"  name="email" placeholder="Email" :value="old('email')"  >
+                                                @error('email')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input required="" type="password" name="password" placeholder="Password" required autocomplete="new-password"> 
-                                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-
+                                                <input  type="password" name="password" placeholder="Password"  autocomplete="new-password"> 
+                                                @error('password')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input required="" type="password" name="password_confirmation" placeholder="Confirm password" required autocomplete="new-password">
-                                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-
+                                                <input  type="password" name="password_confirmation" placeholder="Confirm password"  autocomplete="new-password">
+                                                
+                                                @error('password_confirmation')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                             </div>
-                                            <div class="login_footer form-group">
+                                            {{-- <div class="login_footer form-group">
                                                 <div class="chek-form">
                                                     <div class="custome-checkbox">
                                                         <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="">
@@ -110,7 +55,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-fill-out btn-block hover-up" name="login">Submit &amp; Register</button>
                                             </div>
