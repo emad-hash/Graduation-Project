@@ -8,9 +8,13 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+
 class AdminEditProductComponent extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
+
     public $product_id;
     public $name;
     public $slug;
@@ -48,6 +52,8 @@ class AdminEditProductComponent extends Component
         $this->slug = Str::slug($this->name);
     }
 
+ 
+
     public function UpdateProduct(){
         $this->validate([
             'name'=> 'required',
@@ -64,6 +70,7 @@ class AdminEditProductComponent extends Component
             'category_id'=> 'required'
 
         ]);
+        
         $product = Product::find($this->product_id);
         $product->name = $this->name;
         $product->slug = $this->slug;
@@ -82,12 +89,21 @@ class AdminEditProductComponent extends Component
             $product->image = $imageName;
         }
         $product->category_id = $this->category_id;
+        
         $product->save();
-        // session()->flash('message', 'Product has been created successfully !');
-        // return redirect(route('admin.products'))->alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
-        return redirect(route('admin.products'));
 
-        ;
+        $this->alert('success','Product has been Update successfully', [
+            'position' => 'center',
+            'timer' => 5000,
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => '',
+            'timerProgressBar' => true,
+
+           ]);
+           return redirect(route('admin.products'));
+
+        
 
     }
 

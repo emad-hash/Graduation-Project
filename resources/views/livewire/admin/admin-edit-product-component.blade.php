@@ -33,9 +33,9 @@
                               </div>
                             </div>
                             <div class="card-body">
-                                @if (Session::has('message'))
+                                {{-- @if (Session::has('message'))
                                     <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
-                                @endif
+                                @endif --}}
                                <form  wire:submit.prevent="UpdateProduct">
                                 <div class="mb-3 mt-3">
                                     <label for="name" class="form-label">Name</label>
@@ -139,7 +139,7 @@
                                 </div>
                                 
 
-                               <button type="submit" class="btn btn-primary float-end">Update</button>
+                               <button type="submit" class="btn btn-primary float-end" >Update</button>
                                </form>
                             </div>
                         </div>
