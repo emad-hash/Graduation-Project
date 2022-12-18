@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Wishpro;
 use App\Http\Livewire\HomeCompo;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\ShopComponent;
@@ -16,6 +17,8 @@ use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
+use App\Http\Livewire\Admin\AdminEditProductComponent;
+use App\Http\Livewire\Admin\AdminEditProductsComponent;
 use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
 use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
 // use Illuminate\Routing\Exceptions\UrlGenerationException;
@@ -72,7 +75,8 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/category/add',AdminAddCategoriesComponent::class)->name('admin.category.add');
     Route::get('/admin/category/edit/{category_id}',AdminEditCategoriesComponent::class)->name('admin.category.edit');
     Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');
-    Route::get('/admin/product/add',AdminAddProductComponent::class)->name('admin.product.add');
+    Route::get('/admin/products/add',AdminAddProductComponent::class)->name('admin.product.add');
+    Route::get('/admin/products/edit/{product_id}',AdminEditProductComponent::class)->name('admin.product.edit');
 
    });
 

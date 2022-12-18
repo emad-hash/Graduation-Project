@@ -39,6 +39,8 @@ class AdminEditCategoriesComponent extends Component
         $category->slug = $this->slug ;
         $category->save();
         session()->flash('message','Category has been updated successfully !');
+        return redirect(route('admin.categories'));
+
     }
     public function render()
     {
