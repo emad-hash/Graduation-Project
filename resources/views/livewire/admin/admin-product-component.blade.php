@@ -64,8 +64,8 @@
                                         <td>{{$product->category->name }}</td>
                                         <td>{{$product->created_at}}</td>
                                         <td>
-                                        {{-- <a href="" class="text-info">Edit</a>
-                                    <a href="#" class="text-danger" "  style="margin-left: 20px">Delete</a> --}}
+                                            {{-- <a href="{{route('productsss')}}" class="text-info">Edit</a> --}}
+                                            {{-- <a href="#" class="text-danger" onclick="deleteConfirmation({{$category->id}})"  style="margin-left: 20px">Delete</a> --}}
                                         </td>
                                     </tr>
                                     @endforeach

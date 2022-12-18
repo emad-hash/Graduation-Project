@@ -9,12 +9,13 @@ use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\CatrgoryComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\WishlistComponent;
+use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Admin\AdProductComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
-use App\Http\Livewire\Admin\AdminEditProductComponent;
 use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
 use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
 // use Illuminate\Routing\Exceptions\UrlGenerationException;
@@ -72,7 +73,6 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/category/edit/{category_id}',AdminEditCategoriesComponent::class)->name('admin.category.edit');
     Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');
     Route::get('/admin/product/add',AdminAddProductComponent::class)->name('admin.product.add');
-    Route::get('/admin/product/edit',AdminEditProductComponent::class)->name('admin.product.edit');
 
    });
 
