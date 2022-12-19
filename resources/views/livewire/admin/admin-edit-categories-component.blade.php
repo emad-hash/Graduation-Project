@@ -33,7 +33,7 @@
                             </div>
                             <div class="card-body">
                                 @if (Session::has('message'))
-                                    <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                    <div class="alert alert-info" role="alert">{{Session::get('message')}}</div>
                                 @endif
                                <form  wire:submit.prevent="updateCategory">
                                 <div class="mb-3 mt-3">

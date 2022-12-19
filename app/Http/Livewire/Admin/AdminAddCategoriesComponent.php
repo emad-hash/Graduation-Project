@@ -5,10 +5,13 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 
 class AdminAddCategoriesComponent extends Component
 {
+    use LivewireAlert;
+
     public $name;
     public $slug ;
 
@@ -30,8 +33,16 @@ class AdminAddCategoriesComponent extends Component
         $category->name = $this->name;
         $category->slug = $this->slug;
         $category->save();
-        session()->flash('message', 'Category has been created successfully !');
-        return redirect(route('admin.categories'));
+        $this->alert('success','Product has been created successfully', [
+            'position' => 'center',
+            'timer' => 8000,
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => '',
+            'timerProgressBar' => true,
+
+           ]);
+           return redirect('/admin/categories/add')->back();
     }
 
     public function render()

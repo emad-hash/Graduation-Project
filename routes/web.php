@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\Wishpro;
+// use App\Http\Livewire\Wishpro;
 use App\Http\Livewire\HomeCompo;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\ShopComponent;
@@ -12,13 +12,16 @@ use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\WishlistComponent;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Admin\AdProductComponent;
+use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
+use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
-use App\Http\Livewire\Admin\AdminEditProductsComponent;
+// use App\Http\Livewire\Admin\AdminEditProductsComponent;
 use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
 use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
 // use Illuminate\Routing\Exceptions\UrlGenerationException;
@@ -56,6 +59,7 @@ Route::get('/product-category/{slug}',CatrgoryComponent::class)->name('product.c
 Route::get('/search',SearchComponent::class)->name('product.search');
 
 
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -77,6 +81,9 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');
     Route::get('/admin/products/add',AdminAddProductComponent::class)->name('admin.product.add');
     Route::get('/admin/products/edit/{product_id}',AdminEditProductComponent::class)->name('admin.product.edit');
+    Route::get('/admin/coupons',AdminCouponsComponent::class)->name('admin.coupons');
+    Route::get('/admin/coupons/add',AdminAddCouponsComponent::class)->name('admin.coupons.add');
+    Route::get('/admin/coupons/edit/{coupon_id}',AdminEditCouponsComponent::class)->name('admin.coupons.edit');
 
    });
 

@@ -23,8 +23,8 @@ class AdminEditProductComponent extends Component
     public $regular_price;
     public $sale_price;
     public $SKU;
-    public $stock_status = 'instock';
-    public $featured = 0;
+    public $stock_status;
+    public $featured;
     public $quantity;
     public $image;
     public $category_id;
@@ -101,7 +101,7 @@ class AdminEditProductComponent extends Component
             'timerProgressBar' => true,
 
            ]);
-           return redirect(route('admin.products'));
+           return redirect()->back();
 
         
 

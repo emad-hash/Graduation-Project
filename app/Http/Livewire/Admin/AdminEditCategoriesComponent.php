@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 
 class AdminEditCategoriesComponent extends Component
@@ -38,8 +39,16 @@ class AdminEditCategoriesComponent extends Component
         $category->name = $this->name ;
         $category->slug = $this->slug ;
         $category->save();
-        session()->flash('message','Category has been updated successfully !');
-        return redirect(route('admin.categories'));
+        $this->alert('success','Product has been Update successfully', [
+            'position' => 'center',
+            'timer' => 5000,
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => '',
+            'timerProgressBar' => true,
+
+           ]);
+           return redirect('/admin/products')->back();
 
     }
     public function render()

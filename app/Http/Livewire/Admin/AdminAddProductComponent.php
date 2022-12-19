@@ -8,10 +8,13 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class AdminAddProductComponent extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
+
     public $name;
     public $slug;
     public $short_description;
@@ -19,8 +22,8 @@ class AdminAddProductComponent extends Component
     public $regular_price;
     public $sale_price;
     public $SKU;
-    public $stock_status = 'instock';
-    public $featured = 0;
+    public $stock_status ;
+    public $featured;
     public $quantity;
     public $image;
     public $category_id;
@@ -28,6 +31,7 @@ class AdminAddProductComponent extends Component
     public function generateSlug(){
         $this->slug = Str::slug($this->name);
     }
+   
     public function addProduct(){
         $this->validate([
             'name'=> 'required',
@@ -60,8 +64,16 @@ class AdminAddProductComponent extends Component
         $product->image = $imageName;
         $product->category_id = $this->category_id;
         $product->save();
-        session()->flash('message', 'Product has been created successfully !');
-        return redirect(route('admin.products'));
+        $this->alert('success','Product has been created successfully', [
+            'position' => 'center',
+            'timer' => 8000,
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => '',
+            'timerProgressBar' => true,
+
+           ]);
+           return redirect('/admin/products/add')->back();
     }
 
     public function render()
