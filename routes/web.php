@@ -4,8 +4,10 @@
 use App\Http\Livewire\HomeCompo;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\ShopComponent;
+use App\Http\Livewire\AboutComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SearchComponent;
+use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\CatrgoryComponent;
 use App\Http\Livewire\CheckoutComponent;
@@ -19,9 +21,9 @@ use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
+// use App\Http\Livewire\Admin\AdminEditProductsComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
-// use App\Http\Livewire\Admin\AdminEditProductsComponent;
 use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
 use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
 // use Illuminate\Routing\Exceptions\UrlGenerationException;
@@ -42,7 +44,9 @@ use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
 // });
 
 
-Route::get('/',HomeCompo::class)->name('home.index');
+Route::get('/home',HomeCompo::class)->name('home.index');
+
+Route::get('/about',AboutComponent::class)->name('about.index');
 
 Route::get('/shop',ShopComponent::class)->name('shop');
 
@@ -58,6 +62,7 @@ Route::get('/product-category/{slug}',CatrgoryComponent::class)->name('product.c
 
 Route::get('/search',SearchComponent::class)->name('product.search');
 
+Route::get('/contact',ContactComponent::class)->name('contact');
 
 
 // Route::get('/dashboard', function () {

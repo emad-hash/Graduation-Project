@@ -70,7 +70,7 @@
             <div class="container">
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
-                        <a href="index.html"><img src="{{ asset('assets/imgs/theme/logo.png')}}" alt="logo"></a>
+                        <a href="{{route('home.index')}}"><img src="{{ asset('assets/imgs/theme/logo.png')}}" alt="logo"></a>
                     </div>
                     <div class="header-right">
                         @livewire('header-search-component')
@@ -89,7 +89,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="index.html"><img src="./assets/imgs/theme/logo.png" alt="logo"></a>
+                        <a href="{{route('home.index')}}"><img src="{{asset('assets/imgs/theme/logo.png')}}" alt="logo"></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-categori-wrap d-none d-lg-block">
@@ -184,9 +184,10 @@
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block" style="margin-left: 60px ;">
                             <nav>
                                 <ul>
-                                    <li><a class="active" href="/">Home </a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="{{route('shop')}}">Shop</a></li>
+                                    {{-- {{dd(Request::url())}} --}}
+                                    <li><a class="{{str_contains(Request::url(), '/home') ? 'active' : ''}}" href="/home">Home </a></li>
+                                    <li><a class="{{str_contains(Request::url(), '/about') ? 'active' : ''}}" href="/about">About</a></li>
+                                    <li><a class="{{str_contains(Request::url(), '/shop') ? 'active' : ''}}" href="/shop">Shop</a></li>
                                     
                                     <li class="position-static"><a href="#">Our Collections <i
                                                 class="fi-rs-angle-down"></i></a>
@@ -220,7 +221,7 @@
                                         </ul>
                                     </li>
                                     
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a class="{{str_contains(Request::url(), '/contact') ? 'active' : ''}}" href="/contact">Contact</a></li>
                                     @auth
                                     @if(Auth::user()->utype == 'ADM')
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
@@ -234,7 +235,7 @@
                                             <li><a href="#">Logout</a></li>
                                         </ul>
                                         @else
-                                            <li><a href="{{route('user.dashboard')}}">My Account</a></li>
+                                            <li><a class="{{str_contains(Request::url(), '/user/dashboard') ? 'active' : ''}}" href="/user/dashboard">My Account</a></li>
                                   
                                         @endif
                                       
@@ -318,7 +319,7 @@
         <div class="mobile-header-wrapper-inner">
             <div class="mobile-header-top">
                 <div class="mobile-header-logo">
-                    <a href="index.html"><img src="./assets/imgs/theme/logo.png" alt="logo"></a>
+                    <a href="{{route('home.index')}}"><img src="{{asset('assets/imgs/theme/logo.png')}}" alt="logo"></a>
                 </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                     <button class="close-style search-close">
@@ -329,10 +330,11 @@
             </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="#">
+                    {{-- <form action="#">
                         <input type="text" placeholder="Search for items…">
                         <button type="submit"><i class="fi-rs-search"></i></button>
-                    </form>
+                    </form> --}}
+                    @livewire('header-search-component')
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
                     <div class="main-categori-wrap mobile-header-border">
@@ -357,9 +359,9 @@
                     <nav>
                         <ul class="mobile-menu">
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                    href="index.html">Home</a></li>
+                                    href="{{route('home.index')}}">Home</a></li>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                    href="shop.html">shop</a></li>
+                                    href="{{route('shop')}}">shop</a></li>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Our
                                     Collections</a>
                                 <ul class="dropdown">
@@ -407,10 +409,10 @@
                         <a href="contact.html"> Our location </a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="login.html">Log In </a>
+                        <a href="{{route('login')}}">Log In </a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="register.html">Sign Up</a>
+                        <a href="{{route('register')}}">Sign Up</a>
                     </div>
                     <div class="single-mobile-header-info">
                         <a href="#">(+962) 778084911 </a>
@@ -418,11 +420,11 @@
                 </div>
                 <div class="mobile-social-icon">
                     <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-facebook.svg')}}" alt=""></a>
+                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-twitter.svg')}}" alt=""></a>
+                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-instagram.svg')}}" alt=""></a>
+                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-pinterest.svg')}}" alt=""></a>
+                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-youtube.svg')}}" alt=""></a>
                 </div>
             </div>
         </div>
@@ -438,7 +440,7 @@
                     <div class="col-lg-7 mb-md-3 mb-lg-0">
                         <div class="row align-items-center">
                             <div class="col flex-horizontal-center">
-                                <img class="icon-email" src="assets/imgs/theme/icons/icon-email.svg" alt="">
+                                <img class="icon-email" src="{{asset('assets/imgs/theme/icons/icon-email.svg')}}" alt="">
                                 <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
                             </div>
                             <div class="col my-4 my-md-0 des">
@@ -464,7 +466,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="widget-about font-md mb-md-5 mb-lg-0">
                             <div class="logo logo-width-1 wow fadeIn animated">
-                                <a href="index.html"><img src="{{asset('assets/imgs/theme/logo.png')}}" alt="logo"></a>
+                                <a href="{{route('home.index')}}"><img src="{{asset('assets/imgs/theme/logo.png')}}" alt="logo"></a>
                             </div>
                             <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                             <p class="wow fadeIn animated">
@@ -478,19 +480,21 @@
                             </p>
                             <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                             <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                                <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                                <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                                <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                                <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                                <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-facebook.svg')}}" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-twitter.svg')}}" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-instagram.svg')}}" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-pinterest.svg')}}" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-youtube.svg')}}" alt=""></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <h5 class="widget-title wow fadeIn animated">About</h5>
                         <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{route('shop')}}">Shop</a></li>
+                            <li><a href="{{route('about.index')}}">About Us</a></li>
+                            <li><a href="{{route('contact')}}">Contact Us</a></li>
+
                         </ul>
                     </div>
                     <div class="col-lg-2  col-md-3">
@@ -511,13 +515,13 @@
                                 <div class="download-app wow fadeIn animated mob-app">
                                     <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active"
                                             src="assets/imgs/theme/app-store.jpg" alt=""></a>
-                                    <a href="#" class="hover-up"><img src="assets/imgs/theme/google-play.jpg"
+                                    <a href="#" class="hover-up"><img src="{{asset('assets/imgs/theme/google-play.jpg')}}"
                                             alt=""></a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
                                 <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
-                                <img class="wow fadeIn animated" src="assets/imgs/theme/payment-method.png" alt="">
+                                <img class="wow fadeIn animated" src="{{asset('assets/imgs/theme/payment-method.png')}}" alt="">
                             </div>
                         </div>
                     </div>
