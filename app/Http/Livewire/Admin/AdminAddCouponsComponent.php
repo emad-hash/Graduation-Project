@@ -47,7 +47,7 @@ class AdminAddCouponsComponent extends Component
             'timerProgressBar' => true,
 
            ]);
-           return redirect('/admin/coupons/add')->back();
+           return redirect()->to('/admin/coupons/add');
     }
     public function render()
     {

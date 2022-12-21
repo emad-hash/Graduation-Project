@@ -42,7 +42,8 @@ class AdminAddCategoriesComponent extends Component
             'timerProgressBar' => true,
 
            ]);
-           return redirect('/admin/categories/add')->back();
+           return redirect()->to('/admin/categories/add');
+           
     }
 
     public function render()

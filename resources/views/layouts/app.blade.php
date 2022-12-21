@@ -185,7 +185,7 @@
                             <nav>
                                 <ul>
                                     {{-- {{dd(Request::url())}} --}}
-                                    <li><a class="{{str_contains(Request::url(), '/home') ? 'active' : ''}}" href="/home">Home </a></li>
+                                    <li><a class="{{str_contains(Request::url(), '/') ? 'active' : ''}}" href="/home">Home </a></li>
                                     <li><a class="{{str_contains(Request::url(), '/about') ? 'active' : ''}}" href="/about">About</a></li>
                                     <li><a class="{{str_contains(Request::url(), '/shop') ? 'active' : ''}}" href="/shop">Shop</a></li>
                                     
@@ -235,7 +235,7 @@
                                             <li><a href="#">Logout</a></li>
                                         </ul>
                                         @else
-                                            <li><a class="{{str_contains(Request::url(), '/user/dashboard') ? 'active' : ''}}" href="/user/dashboard">My Account</a></li>
+                                            <li><a class="{{str_contains(Request::url(), '/My Account') ? 'active' : ''}}" href="/My Account">My Account</a></li>
                                   
                                         @endif
                                       

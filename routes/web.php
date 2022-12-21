@@ -20,8 +20,8 @@ use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
-use App\Http\Livewire\Admin\AdminCategoriesComponent;
 // use App\Http\Livewire\Admin\AdminEditProductsComponent;
+use App\Http\Livewire\Admin\AdminCategoriesComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
 use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
@@ -44,7 +44,7 @@ use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
 // });
 
 
-Route::get('/home',HomeCompo::class)->name('home.index');
+Route::get('/',HomeCompo::class)->name('home.index');
 
 Route::get('/about',AboutComponent::class)->name('about.index');
 
@@ -63,7 +63,7 @@ Route::get('/product-category/{slug}',CatrgoryComponent::class)->name('product.c
 Route::get('/search',SearchComponent::class)->name('product.search');
 
 Route::get('/contact',ContactComponent::class)->name('contact');
-
+    
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -76,7 +76,7 @@ Route::get('/contact',ContactComponent::class)->name('contact');
 // });
 
 Route::middleware(['auth'])->group(function(){
- Route::get('/user/dashboard',UserDashboardComponent::class)->name('user.dashboard');
+ Route::get('/My Account',UserDashboardComponent::class)->name('user.dashboard');
 });
 Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');

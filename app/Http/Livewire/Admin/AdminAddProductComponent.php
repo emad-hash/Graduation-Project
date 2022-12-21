@@ -73,7 +73,7 @@ class AdminAddProductComponent extends Component
             'timerProgressBar' => true,
 
            ]);
-           return redirect('/admin/products/add')->back();
+           return redirect()->to('/admin/products/add');
     }
 
     public function render()
