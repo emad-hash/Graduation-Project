@@ -81,7 +81,7 @@
                                 data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one"
                                 aria-selected="true">Featured</button>
                         </li>
-                     
+                        
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three"
                                 type="button" role="tab" aria-controls="tab-three" aria-selected="false">New
