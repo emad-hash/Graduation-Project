@@ -22,10 +22,13 @@ use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 // use App\Http\Livewire\Admin\AdminEditProductsComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
+use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
 use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
+use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
+use App\Http\Livewire\Admin\AdminEditHomeSliderComponent;
 // use Illuminate\Routing\Exceptions\UrlGenerationException;
 
 /*
@@ -43,6 +46,7 @@ use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
 //     return view('welcome');
 // });
 
+// Route::get('/',HomeCompo::class)->name('home');
 
 Route::get('/',HomeCompo::class)->name('home.index');
 
@@ -89,6 +93,9 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/coupons',AdminCouponsComponent::class)->name('admin.coupons');
     Route::get('/admin/coupons/add',AdminAddCouponsComponent::class)->name('admin.coupons.add');
     Route::get('/admin/coupons/edit/{coupon_id}',AdminEditCouponsComponent::class)->name('admin.coupons.edit');
+    Route::get('/admin/slider',AdminHomeSliderComponent::class)->name('admin.slide');
+    Route::get('/admin/slider/add',AdminAddHomeSliderComponent::class)->name('admin.slide.add');
+    Route::get('/admin/slider/edit/{slide_id}',AdminEditHomeSliderComponent::class)->name('admin.slide.edit');
 
    });
 

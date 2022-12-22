@@ -185,8 +185,8 @@
                             <nav>
                                 <ul>
                                     {{-- {{dd(Request::url())}} --}}
-                                    <li><a class="{{str_contains(Request::url(), '/') ? 'active' : ''}}" href="/home">Home </a></li>
-                                    <li><a class="{{str_contains(Request::url(), '/about') ? 'active' : ''}}" href="/about">About</a></li>
+                                    <li><a class="{{str_contains(Request::url(), '/') ? 'active' : ''}}" href="{{route('home.index')}}">Home </a></li>
+                                    <li><a class="{{str_contains(Request::url(), '/about') ? 'active' : ''}}" href="{{route('about.index')}}">About</a></li>
                                     <li><a class="{{str_contains(Request::url(), '/shop') ? 'active' : ''}}" href="/shop">Shop</a></li>
                                     
                                     <li class="position-static"><a href="#">Our Collections <i
@@ -229,6 +229,7 @@
                                             <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
                                             <li><a href="{{route('admin.products')}}">Products</a></li>
                                             <li><a href="{{route('admin.categories')}}">Categories</a></li>
+                                            <li><a href="{{route('admin.slide')}}">Manage Slider</a></li>
                                             <li><a href="{{route('admin.coupons')}}">Coupons</a></li>
                                             <li><a href="#">Orders</a></li>
                                             <li><a href="#">Customers</a></li>

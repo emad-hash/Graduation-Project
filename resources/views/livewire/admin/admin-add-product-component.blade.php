@@ -88,7 +88,7 @@
                                 </div> 
                                 <div class="mb-3 mt-3">
                                     <label for="stock_status" class="form-label" " >Stock Status</label>
-                                    <select class="form-control" name="stock_status" wire:model="stock_status>
+                                    <select class="form-control" name="stock_status" wire:model="stock_status">
                                         <option value="instock" class="form-control" >InStock</option>
                                         <option value="outofstock" class="form-control">Out Of Stock</option>
                                     </select>
