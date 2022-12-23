@@ -1,6 +1,5 @@
 <div>
     <main class="main">
-
         <section class="home-slider position-relative pt-50">
             <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
                 @foreach ($slides as $slide )
@@ -95,14 +94,19 @@
                 <div class="tab-content wow fadeIn animated" id="myTabContent">
                     <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                         <div class="row product-grid-4">
+                            {{-- @php
+                               $witems = Cart::instance('Wishlist')->content()->pluck('id');
+                             @endphp --}}
+                            @foreach ($fproducts as $fproduct)
                             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="product-details.html">
-                                                <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
+                                            <a href="{{route('product.details',['slug'=>$fproduct->slug])}}">
+                                                <img class="default-img" src="{{asset('assets/imgs/products')}}/{{$fproduct->image}}" alt="">
                                             </a>
                                         </div>
+                                        
                                         
                                     <div class="product-badges product-badges-position product-badges-mrg">
                                         <span class="hot">Fabulous</span>
@@ -112,26 +116,31 @@
                                     <div class="product-category">
                                         <a href="shop.html">MDF wood panels</a>
                                     </div>
-                                    <h2><a href="product-details.html">Wooden plaque with an Islamic drawing design</a></h2>
+                                    <h2><a href="{{route('product.details',['slug'=>$fproduct->slug])}}"{{$fproduct->name}}</a></h2>
                                     <div class="rating-result" title="90%">
                                         <span>
                                             <span>90%</span>
                                         </span>
                                     </div>
                                     <div class="product-price">
-                                        <span>32 JD </span>
-                                        <span class="old-price">46 JD</span>
+                                        <span>{{$fproduct->regular_price}} JD </span>
+                                        {{-- <span class="old-price">46 JD</span> --}}
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i
+                                        {{-- @if ($witems->contains($fproduct->id))
+                                        <a aria-label="Remove From Wishlist" class="action-btn hover-up Wishlisted" href="#" wire:click.prevent="removeFromWishlist({{ $fproduct->id}})"><i class="fi-rs-heart"></i></a>
+                                        @else
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="AddToWishlist({{ $fproduct->id}}, '{{ $fproduct-> name}}','{{ $fproduct-> regular_price}}')"><i class="fi-rs-heart"></i></a>
+                                      @endif --}}
+                                       
+                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="#" wire:click.prevent="store({{$fproduct->id}},'{{ $fproduct->name}}',{{ $fproduct->regular_price}})"><i
                                             class="fi-rs-shopping-bag-add"></i></a>
-                                    </div>
+                                        </div> 
                                 </div>
                             </div>
+
                         </div>
-                        
+                        @endforeach
                     </div>
                     <!--End product-grid-4-->
                 </div>
@@ -199,8 +208,7 @@
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-2-arrows">
                 </div>
                 <div class="carausel-6-columns carausel-arrow-center" id="carausel-6-columns-2">
-                      @foreach ($lproducts  as $lproduct )
-                          
+                      @foreach ($lproducts  as $lproduct )     
                     <div class="product-cart-wrap small hover-up">
                         <div class="product-img-action-wrap">
                             <div class="product-img product-img-zoom">
@@ -222,7 +230,7 @@
                             </div>
                         </div>
                         <div class="product-content-wrap">
-                            <h2><a href="product-details.html">{{$lproduct->name}}</a></h2>
+                            <h2><a href="{{route('product.details',['slug'=>$lproduct->slug])}}">{{$lproduct->name}}</a></h2>
                             <div class="rating-result" title="90%">
                                 <span>
                                 </span>

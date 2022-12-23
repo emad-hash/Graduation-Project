@@ -91,7 +91,7 @@
       </div>
       <div class="product-content-wrap">
         <div class="product-category">
-          <a href="shop.html">MDF wood panels</a>
+          <a href="shop.html">{{$product->category_id }}</a>
         </div>
         <h2><a href="{{route('product.details',['slug'=>$product->slug])}}">{{ $product->name}}</a></h2>
         <div class="rating-result" title="90%">
@@ -143,10 +143,6 @@
       <ul class="categories">
         @foreach ($categories as $category)
         <li><a href="{{route('product.category',['slug'=>$category->slug])}}">{{ $category-> name}}</a></li>
-        {{-- < li > <a href="shop.html">MDF Wood Panels</a></>
-      <li><a href="shop.html">WATCHES</a></li>
-      <li><a href="shop.html">Large Murals</a></li>
-      <li><a href="shop.html">three-piece plate</a></li> --}}
       @endforeach
     </ul>
   </div>
@@ -167,7 +163,7 @@
       </div>
     </div>
   </div>
-  <div class="list-group">
+  {{-- <div class="list-group">
     <div class="list-group-item mb-10 mt-10">
 
       <label class="fw-900 mt-15">Item Condition</label>
@@ -183,7 +179,7 @@
                 </div>
               </div>
             </div>
-            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a> --}}
           </div>
 
           <!-- Product sidebar Widget -->

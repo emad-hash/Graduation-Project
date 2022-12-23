@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop.html">MDF wood panels</a>
+                                            <p>{{$category_name}}</p>
                                         </div>
                                         <h2><a href="{{route('product.details',['slug'=>$product->slug])}}">{{$product->name}}</a></h2>
                                         <div class="rating-result" title="90%">

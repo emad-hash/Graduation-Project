@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 use Cart;
+use App\Models\Category;
+
 class DetailsComponent extends Component
 {
     public $slug;

@@ -102,8 +102,8 @@
                                     <label for="featured" class="form-label" >Featured</label>
                                     <select class="form-control" name="featured" wire:model="featured">
                                         <option value="">Select</option>
-                                        <option value="No" class="form-control" >No</option>
-                                        <option value="Yes" class="form-control">Yes</option>
+                                        <option value="0" class="form-control" >No</option>
+                                        <option value="1" class="form-control">Yes</option>
                                     </select>
                                     @error('featured')
                                         <p class="text-danger">{{$message}}</p>

@@ -341,11 +341,11 @@
                                             <input required="required" placeholder="PostCode / ZIP" name="name" type="text">
                                         </div>
                                     </div>
-                                    <div class="form-row">
+                                    {{-- <div class="form-row">
                                         <div class="form-group col-lg-12">
                                             <button class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Update</button>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </form>
                                 <div class="mb-30 mt-50">
                                     <div class="heading_s1 mb-3">
