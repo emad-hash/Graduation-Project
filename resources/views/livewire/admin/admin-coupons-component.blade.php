@@ -40,12 +40,12 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>code</th>
-                                            <th>type</th>
-                                            <th>value</th>
-                                            <th>cart_value</th>
-                                            <th>created_at</th>
-                                            <th>updated_at</th>
+                                            <th>Code</th>
+                                            <th>Type</th>
+                                            <th>Value</th>
+                                            <th>Cart_value</th>
+                                            <th>Created_at</th>
+                                            <th>Expiry Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -63,9 +63,9 @@
                                         @else
                                         <td>{{$coupon->value}}%</td>
                                         @endif
-                                        <td>{{$coupon->cart_value}}</td>
+                                        <td>{{$coupon->cart_value}} JD</td>
                                         <td>{{$coupon->created_at}}</td>
-                                        <td>{{$coupon->updated_at}}</td>
+                                        <td>{{$coupon->expiry_date}}</td>
 
                                         <td>
                                         <a href="{{route('admin.coupons.edit',['coupon_id'=>$coupon->id])}}" class="text-info">Edit</a>

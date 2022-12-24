@@ -114,7 +114,9 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">MDF wood panels</a>
+                                            
+                                        <a href="shop.html">{{--{{$category_name}}--}}</a>
+                                       
                                     </div>
                                     <h2><a href="{{route('product.details',['slug'=>$fproduct->slug])}}"{{$fproduct->name}}</a></h2>
                                     <div class="rating-result" title="90%">
@@ -248,8 +250,9 @@
         </div>
     </section>
     <!-- end New Arrivals -->
+
     <!-- Canvas Paintings -->
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>Canvas </span>Paintings</h3>
             <div class="carausel-6-columns-cover position-relative">
@@ -486,10 +489,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- end  Canvas Paintings -->
     <!-- MDF Wood Panels -->
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>MDF Wood  </span>Panels</h3>
             <div class="carausel-6-columns-cover position-relative">
@@ -726,10 +729,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- end  MDF Wood Panels -->
     <!-- WATCHES -->
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>WATCHES</span></h3>
             <div class="carausel-6-columns-cover position-relative">
@@ -966,10 +969,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- end WATCHES -->
     <!-- Large Murals -->
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>Large </span>Murals</h3>
             <div class="carausel-6-columns-cover position-relative">
@@ -1206,10 +1209,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- end Large Murals -->
     <!-- three-piece plate -->
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>Three-piece  </span>Plate</h3>
             <div class="carausel-6-columns-cover position-relative">
@@ -1446,7 +1449,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- end  three-piece plate -->
 
 </main>

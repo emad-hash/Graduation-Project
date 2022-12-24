@@ -12,6 +12,7 @@ use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\CatrgoryComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\WishlistComponent;
+use App\Http\Livewire\ThankyouComponnent;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Admin\AdProductComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
@@ -19,8 +20,8 @@ use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
-use App\Http\Livewire\Admin\AdminAddProductComponent;
 // use App\Http\Livewire\Admin\AdminEditProductsComponent;
+use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
@@ -67,7 +68,9 @@ Route::get('/product-category/{slug}',CatrgoryComponent::class)->name('product.c
 Route::get('/search',SearchComponent::class)->name('product.search');
 
 Route::get('/contact',ContactComponent::class)->name('contact');
-    
+
+Route::get('/thank-you',ThankyouComponnent::class)->name('thankyou');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
