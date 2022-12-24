@@ -108,10 +108,10 @@ class CheckoutComponent extends Component
         {
             $orderItem = new OrderItem();
             $orderItem->product_id = $item->id;
-                $orderItem->order_id = $order->id;
-                $orderItem->price = $item->price;
-                $orderItem->quantity = $item->qty;
-                $orderItem->save();
+            $orderItem->order_id = $order->id;
+            $orderItem->price = $item->price;
+            $orderItem->quantity = $item->qty;
+            $orderItem->save();
     
         }
         if($this->ship_to_different)

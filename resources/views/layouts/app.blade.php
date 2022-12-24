@@ -231,8 +231,8 @@
                                             <li><a href="{{route('admin.products')}}">Products</a></li>
                                             <li><a href="{{route('admin.categories')}}">Categories</a></li>
                                             <li><a href="{{route('admin.slide')}}">Manage Slider</a></li>
-                                            <li><a href="{{route('admin.coupons')}}">Coupons</a></li>
-                                            <li><a href="#">Orders</a></li>
+                                            <li><a href="{{route('admin.coupons')}}">All Coupons</a></li>
+                                            <li><a href="{{route('admin.order')}}">All Orders</a></li>
                                             <li><a href="#">Customers</a></li>
                                             <li><a href="#">Logout</a></li>
                                         </ul>

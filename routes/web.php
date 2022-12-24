@@ -15,12 +15,13 @@ use App\Http\Livewire\WishlistComponent;
 use App\Http\Livewire\ThankyouComponnent;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Admin\AdProductComponent;
+use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
-use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 // use App\Http\Livewire\Admin\AdminEditProductsComponent;
+use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
@@ -99,7 +100,7 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/slider',AdminHomeSliderComponent::class)->name('admin.slide');
     Route::get('/admin/slider/add',AdminAddHomeSliderComponent::class)->name('admin.slide.add');
     Route::get('/admin/slider/edit/{slide_id}',AdminEditHomeSliderComponent::class)->name('admin.slide.edit');
-
+    Route::get('/admin/order',AdminOrderComponent::class)->name('admin.order');
    });
 
 require __DIR__.'/auth.php';
