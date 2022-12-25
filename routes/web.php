@@ -14,19 +14,22 @@ use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\WishlistComponent;
 use App\Http\Livewire\ThankyouComponnent;
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\User\UserOrderComponent;
 use App\Http\Livewire\Admin\AdProductComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
-use App\Http\Livewire\Admin\AdminDashboardComponent;
 // use App\Http\Livewire\Admin\AdminEditProductsComponent;
+use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
+use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\Admin\AdminEditCouponsComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
+use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
@@ -83,8 +86,11 @@ Route::get('/thank-you',ThankyouComponnent::class)->name('thankyou');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-Route::middleware(['auth'])->group(function(){
- Route::get('/My Account',UserDashboardComponent::class)->name('user.dashboard');
+Route::middleware(['auth:sanctum','verified'])->group(function(){
+ Route::get('/myaccount',UserDashboardComponent::class)->name('user.dashboard');
+ Route::get('/user/order',UserOrderComponent::class)->name('user.order');
+ Route::get('/user/order/{order_id}',UserOrderDetailsComponent::class)->name('user.order.details');
+
 });
 Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
@@ -101,6 +107,8 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/slider/add',AdminAddHomeSliderComponent::class)->name('admin.slide.add');
     Route::get('/admin/slider/edit/{slide_id}',AdminEditHomeSliderComponent::class)->name('admin.slide.edit');
     Route::get('/admin/order',AdminOrderComponent::class)->name('admin.order');
+    Route::get('/admin/order/{order_id}',AdminOrderDetailsComponent::class)->name('admin.order.details');
+
    });
 
 require __DIR__.'/auth.php';

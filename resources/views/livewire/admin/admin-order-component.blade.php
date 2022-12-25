@@ -6,6 +6,9 @@
         nav .hidden{
             display: block;
         }
+        th{
+            text-align: center;
+        }
         td{
             text-align: center;
         }
@@ -33,8 +36,8 @@
                                   </div>
                             </div>
                             <div class="card-body">
-                                 @if(Session::has('massege'))
-                                 <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                 @if(Session::has('order_message'))
+                                 <div class="alert alert-success" role="alert">{{Session::get('order_message')}}</div>
                                  @endif
                                 <table class="table table-striped">
                                     <thead>
@@ -50,7 +53,8 @@
                                             <th>Email</th>
                                             <th>Zipcode</th>
                                             <th>Status</th>
-                                            <th>Order Date</th>                                            
+                                            <th>Order Date</th>      
+                                            <th colspan="2">Action</th>                                      
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,10 +75,21 @@
                                         <td>{{$order->zipcode}}</td>
                                         <td>{{$order->status}}</td>
                                         <td>{{$order->created_at}}</td>
-
                                         <td>
-                                            {{-- <a href="{{route('admin.order.edit',['order_id'=>$order->id])}}" class="text-info">Edit</a>
-                                            <a href="#" class="text-danger" onclick="deleteConfirmation({{$order->id}})"  style="margin-left: 20px">Delete</a> --}}
+                                    <a href="{{route('admin.order.details',['order_id'=>$order->id])}}" class="btn btn-info btn-sm">Details</a>    
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-success btn-sm  dropdown-toggle" type="button" data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-expanded="false">Status <span class="caret"></span></button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                  <li>
+                                                    <a href="#" class="dropdown-item" wire:click.prevent="updateOrderStatus({{$order->id}},'delivered')">Delivered</a>
+                                                </li>
+                                                  <li>
+                                                    <a href="#" class="dropdown-item" wire:click.prevent="updateOrderStatus({{$order->id}},'canceled')">Canceled</a>
+                                                </li>
+                                                </ul>
+                                              </div>
                                         </td>
                                     </tr>
                                     @endforeach

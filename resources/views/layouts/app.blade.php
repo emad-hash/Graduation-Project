@@ -225,7 +225,7 @@
                                     <li><a class="{{str_contains(Request::url(), '/contact') ? 'active' : ''}}" href="/contact">Contact</a></li>
                                     @auth
                                     @if(Auth::user()->utype == 'ADM')
-                                    <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
+                                    <li><a href="#">Dashboard<i class="fi-rs-angle-down"></i></a>
                                         <ul class="sub-menu">
                                             <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
                                             <li><a href="{{route('admin.products')}}">Products</a></li>
@@ -234,11 +234,14 @@
                                             <li><a href="{{route('admin.coupons')}}">All Coupons</a></li>
                                             <li><a href="{{route('admin.order')}}">All Orders</a></li>
                                             <li><a href="#">Customers</a></li>
-                                            <li><a href="#">Logout</a></li>
+                                            <li><a href="{{route('logout')}}" onclick="event.prevrntDefault(); this.closest('form').submit();">Logout</a></li>
                                         </ul>
                                         @else
-                                            <li><a class="{{str_contains(Request::url(), '/My Account') ? 'active' : ''}}" href="/My Account">My Account</a></li>
-                                  
+                                        <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
+                                            <ul class="sub-menu">
+                                                <li><a href="{{route('user.dashboard')}}">Dashboard</a></li>
+                                                <li><a href="{{route('user.order')}}">My Orders</a></li>
+                                                <li><a href="{{route('logout')}}" onclick="event.prevrntDefault(); this.closest('form').submit();">Logout</a></li>
                                         @endif
                                       
                                     </li>
