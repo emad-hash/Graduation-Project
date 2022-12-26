@@ -123,7 +123,13 @@
                                                     <span>{{$item->regular_price * $item->quantity }} JD </span>
                                                 </div>
                                                 </td>
+                                                @if($order->status == 'delivered' && $item->rstatus == false)
+                                                <td >
+                                                <a href="{{route('user.reviews',['order_item_id'=>$item->id])}}">Write Review</a>
+                                                </td>
+                                                @endif
                                             </tr>
+
                                             @endforeach
                                         </tbody>
                                     </table>

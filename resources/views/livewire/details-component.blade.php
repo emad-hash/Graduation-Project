@@ -1,4 +1,54 @@
 <div>
+    <style>
+        <style>
+        
+        .comment-form-rating>span{
+            font-size: 14px;
+            line-height: 20px;
+            display: block;
+            float: left;
+            margin-right: 7px;
+            color: #666;
+        }
+         .comment-form-rating ~ p{
+            margin-bottom: 0 !important;
+        }
+         .comment-form-rating p.stars{
+            display: inline-block;
+            margin-bottom: 0 !important;
+        }
+        .comment-form-rating .stars input[type=radio]{
+            display: none;
+        }
+        .comment-form-rating .stars label{
+            display: block;
+            float: left;
+            margin: 0;
+            padding: 0 2px;
+        }
+        .comment-form-rating .stars label::before{
+            content: "\f005";
+            font-family: FontAwesome;
+            font-size: 15px;
+            /*color: #e6e6e6;*/
+            color: #efce4a;
+        }
+        .comment-form-rating .stars input[type=radio]:checked ~ label::before{
+            color: #e6e6e6 ;
+        }
+        .comment-form-rating .stars:hover label::before{
+            color: #efce4a !important;
+        }
+        .comment-form-rating .stars label:hover ~ label::before{
+            color: #e6e6e6 !important;
+        }
+        .comment-form-rating{
+            margin-bottom: 15px;
+        }
+        .comments-text{
+            padding-bottom: 20px;
+        }
+    </style>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -23,16 +73,6 @@
                                                 <img src="{{asset('assets/imgs/products')}}/{{$product->image}}" alt="product image">
                                             </figure>
                                         </div>
-                                        <!-- THUMBNAILS -->
-                                        <!-- <div class="slider-nav-thumbnails pl-15 pr-15">
-                                            <div><img src="{{ asset('assets/imgs/shop/thumbnail-3.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{ asset('assets/imgs/shop/thumbnail-4.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{ asset('assets/imgs/shop/thumbnail-5.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{ asset('assets/imgs/shop/thumbnail-6.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{ asset('assets/imgs/shop/thumbnail-7.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{ asset('assets/imgs/shop/thumbnail-8.jpg')}}" alt="product image"></div>
-                                            <div><img src="{{ asset('assets/imgs/shop/thumbnail-9.jpg')}}" alt="product image"></div>
-                                        </div> -->
                                     </div>
                                     <!-- End Gallery -->
                                     <div class="social-icons single-share">
@@ -42,7 +82,8 @@
                                                         src="{{ asset('assets/imgs/theme/icons/icon-fac')}}ebook.svg" alt=""></a></li>
                                             <li class="social-twitter"> <a href="#"><img
                                                         src="{{ asset('assets/imgs/theme/icons/icon-twi')}}tter.svg" alt=""></a></li>
-                                            <li class="social-instagram"><a href="#"><img
+                                                        <li class="social-instagram"><a href="#"><img
+    
                                                         src="{{ asset('assets/imgs/theme/icons/icon-ins')}}tagram.svg" alt=""></a>
                                             </li>
                                             <li class="social-linkedin"><a href="#"><img
@@ -55,39 +96,36 @@
                                     <div class="detail-info">
                                         <h2 class="title-detail">{{$product->name}}</h2>
                                         <div class="product-detail-rating">
-                                            <!-- <div class="pro-details-brand">
-                                                <span> Brands: <a href="shop.html">Bootstrap</a></span>
-                                            </div> -->
                                             <div class="product-rate-cover text-end">
-                                                <div class="product-rate d-inline-block">
-                                                    <div class="product-rating" style="width:90%">
-                                                    </div>
+                                                <div class="">
+                                                {{-- @php
+                                                    $avgrating = 0;
+                                                @endphp
+                                                @foreach ($product->orderItems->where('rstatus',1) as $orderItem )
+                                                    @php
+                                                        $avgrating = $avgrating + $orderItem->review->rating; 
+                                                    @endphp
+                                                @endforeach
+                                                @for ($i=1;$i<=5;$i++)
+                                                @if ($i<=$avgrating)
+                                                   <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @else
+                                                    <i class="fa fa-star color-gray" aria-hidden="true"></i>
+                                                @endif
+                                                @endfor --}}
                                                 </div>
-                                                <span class="font-small ml-5 text-muted"> (25 reviews)</span>
+                                                {{-- <span class="font-small ml-5 text-muted"> ({{$product->orderItems->where('rstatus',1)->count()}} review)</span> --}}
                                             </div>
                                         </div>
                                         <div class="clearfix product-price-cover">
                                             <div class="product-price primary-color float-left">
                                                 <ins><span class="text-brand">{{$product->regular_price}} JD</span></ins>
-                                                {{-- <ins><span class="old-price font-md ml-15">46 JD</span></ins>
-                                                <span class="save-price  font-md color3 ml-15">25% Off</span> --}}
                                             </div>
                                         </div>
                                         <div class="bt-1 border-color-1 mt-15 mb-15"></div>
                                         <div class="short-desc mb-30">
                                             <p>{{$product->short_description}}</p>
                                         </div>
-                                        {{-- <div class="product_sort_info font-xs mb-30">
-                                            <ul>
-                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera
-                                                    Brand Warranty</li>
-                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 2 Day Return Policy
-                                                </li>
-                                                <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available
-                                                </li>
-                                            </ul>
-                                        </div> --}}
-                                        
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
                                             <div class="detail-qty border radius">
@@ -191,92 +229,29 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!--single-comment -->
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-7.jpg" alt="">
-                                                                    <h6><a href="#">Ana Rosie</a></h6>
-                                                                    <p class="font-xxs">Since 2008</p>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Great low price and works well.</p>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                            <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--single-comment -->
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-8.jpg" alt="">
-                                                                    <h6><a href="#">Steven Keny</a></h6>
-                                                                    <p class="font-xxs">Since 2010</p>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Authentic and Beautiful, Love these way more than ever expected They are Great earphones</p>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                            <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--single-comment -->
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <h4 class="mb-30">Customer reviews</h4>
-                                                    <div class="d-flex mb-30">
-                                                        <div class="product-rate d-inline-block mr-15">
-                                                            <div class="product-rating" style="width:90%">
-                                                            </div>
-                                                        </div>
-                                                        <h6>4.8 out of 5</h6>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>5 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>4 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>3 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>2 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                                                    </div>
-                                                    <div class="progress mb-30">
-                                                        <span>1 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                                                    </div>
-                                                    <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <!--comment form-->
                                         <div class="comment-form">
                                             <h4 class="mb-15">Add a review</h4>
-                                            <div class="product-rate d-inline-block mb-30">
+                                            <div class=" mb-30">
+                                                <div class="comment-form-rating">
+                                                    <p class="stars"> 
+                                                        <label for="rated-1"></label>
+                                                        <input type="radio" id="rated-1" name="rating" value="1" wire:model="rating">
+                                                        <label for="rated-2"></label>
+                                                        <input type="radio" id="rated-2" name="rating" value="2" wire:model="rating">
+                                                        <label for="rated-3"></label>
+                                                        <input type="radio" id="rated-3" name="rating" value="3" wire:model="rating">
+                                                        <label for="rated-4"></label>
+                                                        <input type="radio" id="rated-4" name="rating" value="4" wire:model="rating">
+                                                        <label for="rated-5"></label>
+                                                        <input type="radio" id="rated-5" name="rating" value="5" checked="checked" wire:model="rating">
+                                                        @error('rating') <span class="text-danger">{{$message}}</span> @enderror
+                                                    </p>
+                                                </div> 
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-8 col-md-12">
@@ -285,21 +260,6 @@
                                                             <div class="col-12">
                                                                 <div class="form-group">
                                                                     <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="website" id="website" type="text" placeholder="Website">
                                                                 </div>
                                                             </div>
                                                         </div>
