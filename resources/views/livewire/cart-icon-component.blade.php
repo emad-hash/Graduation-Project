@@ -19,7 +19,7 @@
                     <h4><span>{{$item->qty}} × </span>{{$item->model->regular_price}}JD</h4>
                 </div>
                 <div class="shopping-cart-delete">
-                    <a href="#"><i class="fi-rs-cross-small"></i></a>
+                    <a href="#"><i class="fi-rs-cross-small" wire:click.prevent="destroy('{{$item->rowId}}')"></i></a>
                 </div>
             </li>
             @endforeach
@@ -31,7 +31,7 @@
             </div>
             <div class="shopping-cart-button">
                 <a href="{{route('shop.cart')}}" class="outline">View cart</a>
-                <a href="checkout.html">Checkout</a>
+                <a href="#" wire:click.prevent="checkout">Checkout</a>
             </div>
         </div>
     </div>
