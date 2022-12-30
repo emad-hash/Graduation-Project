@@ -48,6 +48,63 @@
         .comments-text{
             padding-bottom: 20px;
         }
+        .color-gray{
+            color: #e6e6e6;
+        }
+        .color-gold{
+            color: gold;
+        }
+        .width-80-percent{
+            width: 80%;
+        }
+        .star-rating{
+            font-size: 0;
+            position: relative;
+            display: inline-block;
+        }
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .star-rating{
+          overflow: hidden;
+        }
+      }
+      .star-rating::before{
+        content: "\f005\f005\f005\f005\f005";
+        font-family: FontAwesome;
+         font-size: 15px;
+          color: #e6e6e6;
+      }
+      .star-rating span{
+        display: inline-block;
+        float: left;
+        overflow-x: hidden; 
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .star-rating span::before{
+        content: "\f005\f005\f005\f005\f005";
+        font-family: FontAwesome;
+        font-size: 15px;
+        color: #efce4a;
+      }
+      .width-0-percent{
+        width: 0%;
+      }
+      .width-20-percent{
+        width: 20%;
+      }
+      .width-40-percent{
+        width: 40%;
+      }
+      .width-60-percent{
+        width: 60%;
+      }
+      .width-80-percent{
+        width: 80%;
+      }
+      .width-100-percent{
+        width: 100%;
+      }
     </style>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
@@ -98,7 +155,7 @@
                                         <div class="product-detail-rating">
                                             <div class="product-rate-cover text-end">
                                                 <div class="">
-                                                {{-- @php
+                                                @php
                                                     $avgrating = 0;
                                                 @endphp
                                                 @foreach ($product->orderItems->where('rstatus',1) as $orderItem )
@@ -108,13 +165,13 @@
                                                 @endforeach
                                                 @for ($i=1;$i<=5;$i++)
                                                 @if ($i<=$avgrating)
-                                                   <i class="fa fa-star" aria-hidden="true"></i>
+                                                   <i class="fa fa-star color-gold" aria-hidden="true"></i>
                                                     @else
                                                     <i class="fa fa-star color-gray" aria-hidden="true"></i>
                                                 @endif
-                                                @endfor --}}
+                                                @endfor
+                                                <span class="font-small ml-5 text-muted"> ({{$product->orderItems->where('rstatus',1)->count()}} review)</span>
                                                 </div>
-                                                {{-- <span class="font-small ml-5 text-muted"> ({{$product->orderItems->where('rstatus',1)->count()}} review)</span> --}}
                                             </div>
                                         </div>
                                         <div class="clearfix product-price-cover">
@@ -158,7 +215,7 @@
                                         <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Additional info</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a>
+                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews ({{$product->orderItems->where('rstatus',1)->count()}})</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
@@ -207,67 +264,43 @@
                                                 <div class="col-lg-8">
                                                     <h4 class="mb-30">Customer questions & answers</h4>
                                                     <div class="comment-list">
+                                                        @foreach ($product->orderItems->where('rstatus',1) as $orderItem )
                                                         <div class="single-comment justify-content-between d-flex">
                                                             <div class="user justify-content-between d-flex">
                                                                 <div class="thumb text-center">
                                                                     <img src="assets/imgs/page/avatar-6.jpg" alt="">
-                                                                    <h6><a href="#">Jacky Chan</a></h6>
-                                                                    <p class="font-xxs">Since 2012</p>
+                                                                    <h4><a href="#">{{$orderItem->order->user->name}}</a></h4>
                                                                 </div>
                                                                 <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
-                                                                        </div>
+                                                                    <div class="">
+                                                                        @php
+                                                                        $avgrating = 0;
+                                                                    @endphp
+                                                                    @foreach ($product->orderItems->where('rstatus',1) as $orderItem )
+                                                                        @php
+                                                                            $avgrating = $avgrating + $orderItem->review->rating; 
+                                                                        @endphp
+                                                                    @endforeach
+                                                                    @for ($i=1;$i<=5;$i++)
+                                                                    @if ($i<=$avgrating)
+                                                                       <i class="fa fa-star color-gold" aria-hidden="true"></i>
+                                                                        @else
+                                                                        <i class="fa fa-star color-gray" aria-hidden="true"></i>
+                                                                    @endif
+                                                                    @endfor
                                                                     </div>
-                                                                    <p>Thank you very fast shipping from Poland only 3days.</p>
+                                                                    <p>{{$orderItem->review->comment}}</p>
                                                                     <div class="d-flex justify-content-between">
                                                                         <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                            <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
+                                                                            <p class="font-xs mr-30">{{Carbon\Carbon::parse($orderItem->review->created_at)->format('d F Y g:i A')}}</p>
+                                                                           
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        @endforeach
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--comment form-->
-                                        <div class="comment-form">
-                                            <h4 class="mb-15">Add a review</h4>
-                                            <div class=" mb-30">
-                                                <div class="comment-form-rating">
-                                                    <p class="stars"> 
-                                                        <label for="rated-1"></label>
-                                                        <input type="radio" id="rated-1" name="rating" value="1" wire:model="rating">
-                                                        <label for="rated-2"></label>
-                                                        <input type="radio" id="rated-2" name="rating" value="2" wire:model="rating">
-                                                        <label for="rated-3"></label>
-                                                        <input type="radio" id="rated-3" name="rating" value="3" wire:model="rating">
-                                                        <label for="rated-4"></label>
-                                                        <input type="radio" id="rated-4" name="rating" value="4" wire:model="rating">
-                                                        <label for="rated-5"></label>
-                                                        <input type="radio" id="rated-5" name="rating" value="5" checked="checked" wire:model="rating">
-                                                        @error('rating') <span class="text-danger">{{$message}}</span> @enderror
-                                                    </p>
-                                                </div> 
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-8 col-md-12">
-                                                    <form class="form-contact comment_form" action="#" id="commentForm">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button type="submit" class="button button-contactForm">Submit
-                                                                Review</button>
-                                                        </div>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

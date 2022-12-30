@@ -79,19 +79,13 @@
 
             </a>
           </div>
-          {{-- < div class="product-action-1">
-          <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-            <i class="fi-rs-search"></i></a>
-          <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
-          <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
-        </> --}}
         <div class="product-badges product-badges-position product-badges-mrg">
           <span class="hot">New</span>
         </div>
       </div>
       <div class="product-content-wrap">
         <div class="product-category">
-          <a href="shop.html">{{$product->category_id }}</a>
+          <a href="#">{{$product->category->name }}</a>
         </div>
         <h2><a href="{{route('product.details',['slug'=>$product->slug])}}">{{ $product->name}}</a></h2>
         <div class="rating-result" title="90%">
@@ -120,17 +114,7 @@
                           </div >
   <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
     {{ $products-> links()}}
-    {{-- < nav aria-label="Page navigation example">
-
-    <ul class="pagination justify-content-start">
-      <li class="page-item active"><a class="page-link" href="#">01</a></li>
-      <li class="page-item"><a class="page-link" href="#">02</a></li>
-      <li class="page-item"><a class="page-link" href="#">03</a></li>
-      <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-      <li class="page-item"><a class="page-link" href="#">16</a></li>
-      <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
-    </ul>
-  </> --}}
+  
                           </div >
                       </div >
   <div class="col-lg-3 primary-sidebar sticky-sidebar">
@@ -163,25 +147,7 @@
       </div>
     </div>
   </div>
-  {{-- <div class="list-group">
-    <div class="list-group-item mb-10 mt-10">
-
-      <label class="fw-900 mt-15">Item Condition</label>
-      <div class="custome-checkbox">
-        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="">
-          <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
-          <br>
-            <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="">
-              <label class="form-check-label" for="exampleCheckbox21"><span>Large Murals (27)</span></label>
-              <br>
-                <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="">
-                  <label class="form-check-label" for="exampleCheckbox31"><span>three-piece plate (45)</span></label>
-                </div>
-              </div>
-            </div>
-            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a> --}}
           </div>
-
           <!-- Product sidebar Widget -->
           <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
             <div class="widget-header position-relative mb-20 pb-10">

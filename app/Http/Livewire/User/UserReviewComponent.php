@@ -32,6 +32,7 @@ class UserReviewComponent extends Component
         $review = new Review();
         $review->rating = $this->rating;
         $review->comment = $this->comment; 
+        $review->comment = $this->comment; 
         $review->order_item_id= $this->order_item_id;
         $review->save();
 
