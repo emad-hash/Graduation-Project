@@ -6,13 +6,14 @@
         nav .hidden{
             display: block;
         }
+       
     </style>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="/" rel="nofollow">Dashboard</a>
-                    <span></span> Edit slides
+                    <span></span> Settings
                 </div>
             </div>
         </div>
@@ -24,10 +25,10 @@
                             <div class="card-header">
                               <div class="row">
                                 <div class="col-md-6">
-                                    Edit slides
+                                    Settings
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{route('admin.slide')}}" class="btn btn-success float-end"> All slides</a>
+                                    {{-- <a href="{{route('admin.products')}}" class="btn btn-success float-end"> All Settings</a> --}}
                                 </div>
                               </div>
                             </div>
@@ -35,50 +36,60 @@
                                 @if (Session::has('message'))
                                     <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                 @endif
-                               <form  wire:submit.prevent="UpdateHomeSlider">
+                               <form  wire:submit.prevent="saveSettings">
                                 <div class="mb-3 mt-3">
-                                    <label for="top_title" class="form-label">Top Title</label>
-                                    <input type="text" name="top_title" class="form-control" placeholder="Enter Top Title" wire:model="top_title" >
-                                    @error('top_title')
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Email"  wire:model="email">
+                                    @error('email')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="title" class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Enter Title" wire:model="title">
-                                    @error('title')
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="text" name="phone" class="form-control" placeholder="Phone" wire:model="phone" >
+                                    @error('phone')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="sub_title" class="form-label">Sub Title</label>
-                                    <input type="text" name="sub_title" class="form-control" placeholder="Enter Sub Title" wire:model="sub_title">
-                                    @error('sub_title')
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" name="address" class="form-control" placeholder="Address" wire:model="address" >
+                                    @error('address')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="offer" class="form-label">Offer</label>
-                                    <input type="text" name="offer" class="form-control" placeholder="Enter Offer" wire:model="offer">
-                                    @error('offer')
+                                    <label for="facebook" class="form-label">Facebook</label>
+                                    <input type="text" name="facebook" class="form-control" placeholder="Facebook"wire:model="facebook">
+                                    @error('facebook')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="link" class="form-label">Link</label>
-                                    <input type="text" name="link" class="form-control" placeholder="Enter Link" wire:model="link">
-                                    @error('link')
+                                    <label for="twiter" class="form-label">Twiter</label>
+                                    <input type="text" name="twiter" class="form-control" placeholder="Twiter" wire:model="twiter"  >
+                                    @error('twiter')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="status" class="form-label">Status</label>
-                                    <select name="status" class="form-control" wire:model="status">
-                                        <option value="">Select</option>
-                                        <option value="1">Active</option>
-                                        <option value="0">InActive</option>
-                                    </select>
-                                    @error('status')
+                                    <label for="pinterest" class="form-label">Pinterest</label>
+                                    <input type="text" name="pinterest" class="form-control" placeholder="Pinterest"  wire:model="pinterest" >
+                                    @error('pinterest')
+                                        <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="instagram" class="form-label">Instagram</label>
+                                    <input type="text" name="instagram" class="form-control" placeholder="Instagram"  wire:model="instagram">
+                                    @error('instagram')
+                                        <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div> 
+                                <div class="mb-3 mt-3">
+                                    <label for="youtube" class="form-label" >Youtube</label>
+                                    <input type="text" name="youtube" class="form-control" placeholder="Youtube"  wire:model="youtube">
+                                    @error('youtube')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -88,14 +99,13 @@
                                     @if ($newimage)
                                         <img src="{{$newimage->temporaryUrl()}}" width="120">
                                         @else
-                                        <img src="{{asset('assets/imgs/slider')}}/{{$image}}" width="120">
+                                        <img src="{{asset('assets/imgs/products')}}/{{$image}}" width="120">
                                     @endif
                                     @error('newimage')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
-                                </div> 
-                                
-                               <button type="submit" class="btn btn-primary float-en">Update</button>
+                                </div>  
+                               <button type="submit" class="btn btn-primary float-end">Save</button>
                                </form>
                             </div>
                         </div>

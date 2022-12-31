@@ -15,32 +15,45 @@ class ContactComponent extends Component
     public $email;
     public $telephone;
     public $subject;
-    public $message;
+    public $comment;
 
-    public function submit()
+    public function updated($fields)
     {
-        $validatedData = $this->validate([
-            'name' => 'required|min:6',
+        $this->validateOnly($fields,[
+            'name' => 'required',
             'email' => 'required|email',
             'telephone' => 'required',
             'subject' => 'required',
-            'message' => 'required',
+            'comment' => 'required'
+        ]);
+    }
 
+    public function sendMessage()
+    {
+        $this->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'telephone' => 'required',
+            'subject' => 'required',
+            'comment' => 'required'
         ]);
 
-        Contact::create($validatedData);
-
-        $this->alert('success','Your message was sent successfully', [
+        $contact = new Contact();
+        $contact->name = $this->name;
+        $contact->email = $this->email;
+        $contact->telephone = $this->telephone;
+        $contact->subject = $this->subject;
+        $contact->comment = $this->comment;
+        $contact->save();
+        $this->alert('success','Thanks, Your message has been sent successfully!', [
             'position' => 'center',
             'timer' => 8000,
             'toast' => false,
             'showConfirmButton' => true,
             'onConfirmed' => '',
             'timerProgressBar' => true,
-
+        
            ]);
-
-        return redirect()->to('/contact');
     }
 
 
@@ -50,3 +63,4 @@ class ContactComponent extends Component
         return view('livewire.contact-component');
     }
 }
+

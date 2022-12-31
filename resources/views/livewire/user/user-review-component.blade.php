@@ -53,8 +53,8 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
-                    <span></span>
+                    <a href="index.html" rel="nofollow">My Account </a>
+                    <span></span> Review
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             <div class="container">
                 <div class="row">
                     <div class="comment-form">
-                        <h4 class="mb-15">Add a review</h4>
+                        <h4 class="mb-15">Add Review</h4>
                         <div class="row">
                             @if(Session::has('message'))
                              <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>

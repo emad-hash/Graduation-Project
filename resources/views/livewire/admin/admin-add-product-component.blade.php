@@ -12,7 +12,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="/" rel="nofollow">Home</a>
+                    <a href="/" rel="nofollow">Dashboard</a>
                     <span></span> Add New Product
                 </div>
             </div>
@@ -89,6 +89,7 @@
                                 <div class="mb-3 mt-3">
                                     <label for="stock_status" class="form-label" " >Stock Status</label>
                                     <select class="form-control" name="stock_status" wire:model="stock_status">
+                                        <option value="" class="form-control" >Select</option>
                                         <option value="instock" class="form-control" >InStock</option>
                                         <option value="outofstock" class="form-control">Out Of Stock</option>
                                     </select>

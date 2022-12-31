@@ -15,7 +15,7 @@
                         <div class="contact-from-area padding-20-row-col wow FadeInUp">
                             <h3 class="mb-10 text-center">Drop Us a Line</h3>
                         <p class="text-muted mb-30 text-center font-sm">Lorem ipsum dolor sit amet consectetur. </p>
-                            <form class="contact-form-style text-center" id="contact-form" wire:submit.prevent="submit" >
+                            <form class="contact-form-style text-center" id="contact-form" wire:submit.prevent="sendMessage" >
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="input-style mb-20">
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="textarea-style mb-30">
-                                            <textarea name="message" placeholder="Message" wire:model="message"></textarea>
+                                            <textarea name="comment" placeholder="comment" wire:model="comment"></textarea>
                                             @error('message')
                                             <p class="text-danger">{{$message}}</p>
                                             @enderror

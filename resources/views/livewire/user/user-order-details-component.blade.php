@@ -3,8 +3,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="/" rel="nofollow">Home</a>
-                    <span></span> My Account
+                    <a href="/" rel="nofollow">My Account</a>
                     <span></span> My Orders
                     <span></span> Details
                 </div>
