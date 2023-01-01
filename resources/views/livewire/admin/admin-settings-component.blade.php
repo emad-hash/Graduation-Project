@@ -94,7 +94,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="image" class="form-label">Image</label>
+                                    <label for="image" class="form-label">Logo</label>
                                     <input type="file" name="image" class="form-control" wire:model="newimage" >
                                     @if ($newimage)
                                         <img src="{{$newimage->temporaryUrl()}}" width="120">
