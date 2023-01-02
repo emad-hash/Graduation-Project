@@ -2,126 +2,154 @@
 
     <div class="content">   
         <style>
-            .content {
-              padding-top: 40px;
-              padding-bottom: 40px;
-            }
-            .icon-stat {
-                display: block;
-                overflow: hidden;
-                position: relative;
-                padding: 15px;
-                margin-bottom: 1em;
-                background-color: #fff;
-                border-radius: 4px;
-                border: 1px solid #ddd;
-            }
-            .icon-stat-label {
-                display: block;
-                color: #999;
-                font-size: 13px;
-                padding-bottom: 5px;
-            }
-            .icon-stat-value {
-                display: block;
-                font-size: 28px;
-                font-weight: 600;
-            }
-            .icon-stat-visual {
-                position: relative;
-                top: 22px;
-                display: inline-block;
-                width: 32px;
-                height: 32px;
-                border-radius: 4px;
-                text-align: center;
-                font-size: 16px;
-                line-height: 30px;
-            }
-            .bg-primary {
-                color: #fff;
-                background: #d74b4b;
-            }
-            .bg-secondary {
-                color: #fff;
-                background: #6685a4;
-            }
-            
-            .icon-stat-footer {
-                padding: 10px 0 0;
-                margin-top: 10px;
-                color: #aaa;
-                font-size: 14px;
-                border-top: 1px solid #eee;
-            }
+          .radius-10 {
+    border-radius: 10px !important;
+}
+
+.border-info {
+    border-left: 5px solid  #0dcaf0 !important;
+}
+.border-danger {
+    border-left: 5px solid  #fd3550 !important;
+}
+.border-success {
+    border-left: 5px solid  #15ca20 !important;
+}
+.border-warning {
+    border-left: 5px solid  #ffc107 !important;
+}
+
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid rgba(0, 0, 0, 0);
+    border-radius: .25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+}
+.bg-gradient-scooter {
+    background: #17ead9;
+    background: -webkit-linear-gradient( 
+45deg
+ , #17ead9, #6078ea)!important;
+    background: linear-gradient( 
+45deg
+ , #17ead9, #6078ea)!important;
+}
+.widgets-icons-2 {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ededed;
+    font-size: 27px;
+    border-radius: 10px;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+.text-white {
+    color: #fff!important;
+}
+.ms-auto {
+    margin-left: auto!important;
+}
+.bg-gradient-bloody {
+    background: #f54ea2;
+    background: -webkit-linear-gradient( 
+45deg
+ , #f54ea2, #ff7676)!important;
+    background: linear-gradient( 
+45deg
+ , #f54ea2, #ff7676)!important;
+}
+
+.bg-gradient-ohhappiness {
+    background: #00b09b;
+    background: -webkit-linear-gradient( 
+45deg
+ , #00b09b, #96c93d)!important;
+    background: linear-gradient( 
+45deg
+ , #00b09b, #96c93d)!important;
+}
+
+.bg-gradient-blooker {
+    background: #ffdf40;
+    background: -webkit-linear-gradient( 
+45deg
+ , #ffdf40, #ff8359)!important;
+    background: linear-gradient( 
+45deg
+ , #ffdf40, #ff8359)!important;
+}
         </style>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">    
-                  <div class="icon-stat">    
-                    <div class="row">
-                      <div class="col-xs-8 text-left">
-                        <span class="icon-stat-label">Total Revenue</span>
-                        <span class="icon-stat-value">{{$totalRevenue}} JD</span>
-                      </div>   
-                      <div class="col-xs-4 text-center">
-                        <i class="fa fa-dollar icon-stat-visual bg-primary"></i>
+        <div class="container mt-50 mb-50">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+                   <div class="col">
+                 <div class="card radius-10 border-start border-0 border-3 border-info">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <p class="mb-0 text-secondary">Total Revenue</p>
+                        <h4 class="my-1 text-info">{{$totalRevenue}} JD</h4>
                       </div>
-                    </div>    
-                    <div class="icon-stat-footer">
-                      <i class="fa fa-clock-o"></i> Updated Now
-                    </div>    
-                  </div>    
-                </div>    
-                <div class="col-md-3 col-sm-6">    
-                  <div class="icon-stat">    
-                    <div class="row">
-                      <div class="col-xs-8 text-left">
-                        <span class="icon-stat-label">Total Sales</span>
-                        <span class="icon-stat-value">{{$totalSales}}</span>
-                      </div>    
-                      <div class="col-xs-4 text-center">
-                        <i class="fa fa-gift icon-stat-visual bg-secondary"></i>
+                      <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class="fa fa-dollar"></i>
                       </div>
-                    </div>    
-                    <div class="icon-stat-footer">
-                      <i class="fa fa-clock-o"></i> Updated Now
-                    </div>   
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">    
-                  <div class="icon-stat">    
-                    <div class="row">
-                      <div class="col-xs-8 text-left">
-                        <span class="icon-stat-label">Today Revenue</span>
-                        <span class="icon-stat-value">{{$todayRevenue}} JD</span>
-                      </div>    
-                      <div class="col-xs-4 text-center">
-                        <i class="fa fa-dollar icon-stat-visual bg-primary"></i>
-                      </div>
-                    </div>    
-                    <div class="icon-stat-footer">
-                      <i class="fa fa-clock-o"></i> Updated Now
                     </div>
-                  </div>    
-                </div>    
-                <div class="col-md-3 col-sm-6">    
-                  <div class="icon-stat">    
-                    <div class="row">
-                      <div class="col-xs-8 text-left">
-                        <span class="icon-stat-label">Today Sales</span>
-                        <span class="icon-stat-value">{{$todaySales}}</span>
-                      </div>    
-                      <div class="col-xs-4 text-center">
-                        <i class="fa fa-gift icon-stat-visual bg-secondary"></i>
-                      </div>
-                    </div>    
-                    <div class="icon-stat-footer">
-                      <i class="fa fa-clock-o"></i> Updated Now
-                    </div>    
-                  </div>    
-                </div>    
-              </div>  
+                  </div>
+                 </div>
+                 </div>
+                 <div class="col">
+                <div class="card radius-10 border-start border-0 border-3 border-danger">
+                   <div class="card-body">
+                     <div class="d-flex align-items-center">
+                       <div>
+                         <p class="mb-0 text-secondary">Total Sales</p>
+                         <h4 class="my-1 text-danger">{{$totalSales}}</h4>
+                       </div>
+                       <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class="fa fa-gift icon-stat-visual"></i>
+                       </div>
+                     </div>
+                   </div>
+                </div>
+                </div>
+                <div class="col">
+                <div class="card radius-10 border-start border-0 border-3 border-success">
+                   <div class="card-body">
+                     <div class="d-flex align-items-center">
+                       <div>
+                         <p class="mb-0 text-secondary">Today Revenue</p>
+                         <h4 class="my-1 text-success">{{$todayRevenue}} JD</h4>
+                       </div>
+                       <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="fa fa-dollar"></i>
+                       </div>
+                     </div>
+                   </div>
+                </div>
+                </div>
+                <div class="col">
+                <div class="card radius-10 border-start border-0 border-3 border-warning">
+                   <div class="card-body">
+                     <div class="d-flex align-items-center">
+                       <div>
+                         <p class="mb-0 text-secondary">Today Sales</p>
+                         <h4 class="my-1 text-warning">{{$todaySales}}</h4>
+                       </div>
+                       <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto"><i class="fa fa-gift icon-stat-visual"></i>
+                       </div>
+                     </div>
+                   </div>
+                </div>
+                </div> 
+              </div>
               <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -182,3 +210,7 @@
     </div>
     
 </div>
+<style>
+
+
+</style>

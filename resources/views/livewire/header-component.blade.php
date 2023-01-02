@@ -221,6 +221,7 @@
                                         @else
                                         <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                             <ul class="sub-menu">
+                                                <li><a href="{{route('user.profile')}}">Profile</a></li>
                                                 <li><a href="{{route('user.dashboard')}}">Dashboard</a></li>
                                                 <li><a href="{{route('user.order')}}">My Orders</a></li>
                                                 <li><a href="{{route('user.changepassword')}}">Change Password</a></li>

@@ -19,13 +19,15 @@ use App\Http\Livewire\Admin\AdProductComponent;
 use App\Http\Livewire\User\UserChangeComponent;
 use App\Http\Livewire\User\UserReviewComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
-use App\Http\Livewire\Admin\AdminContactComponent;
+use App\Http\Livewire\User\UserProfileComponent;
 // use App\Http\Livewire\Admin\AdminEditProductsComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminSettingsComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\User\UserEditProfileComponent;
 use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoriesComponent;
@@ -95,7 +97,9 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
  Route::get('/user/order',UserOrderComponent::class)->name('user.order');
  Route::get('/user/order/{order_id}',UserOrderDetailsComponent::class)->name('user.order.details');
  Route::get('/user/review/{order_item_id}',UserReviewComponent::class)->name('user.reviews');
- Route::get('/user/changepassword',UserChangeComponent::class)->name('user.changepassword');    
+ Route::get('/user/changepassword',UserChangeComponent::class)->name('user.changepassword');  
+ Route::get('/user/profile',UserProfileComponent::class)->name('user.profile');    
+ Route::get('/user/edit',UserEditProfileComponent::class)->name('user.profile_edit');
 
 });
 Route::middleware(['auth','authadmin'])->group(function(){
