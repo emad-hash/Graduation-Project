@@ -29,11 +29,14 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         All Products 
                                         <strong class="text-brand">{{ $products-> total()}}</strong>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <input type="text" placeholder="Search..." wire:model="searchTerm">
+                                    </div>
+                                    <div class="col-md-4">
                                         <a href="{{route('admin.product.add')}}" class="btn btn-success float-end"> Add New Products
                                         </a>
                                     </div>

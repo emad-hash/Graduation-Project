@@ -10,7 +10,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class AdminProductComponent extends Component
 {
     public $product_id;
-
+    public $searchTerm;
     use WithPagination;
     use LivewireAlert;
 
@@ -31,7 +31,11 @@ class AdminProductComponent extends Component
          }
     public function render()
     {
-        $products = Product::orderBy('created_at','ASC')->paginate(10);
+        $search = '%' . $this->searchTerm . '%';
+        $products = Product::where('name','LIKE',$search)
+        ->orwhere('stock_status','LIKE',$search)
+        ->orwhere('regular_price','LIKE',$search)
+        ->orderBy('created_at','ASC')->paginate(10);
         return view('livewire.admin.admin-product-component',['products'=>$products]);
     }
 }
