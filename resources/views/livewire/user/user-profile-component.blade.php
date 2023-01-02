@@ -48,7 +48,7 @@
                                                 @if($user->profile->image)
                                                     <img src="{{asset('assets/imgs/profile')}}/{{$user->profile->image}}" class="images" height="551"/>
                                                 @else
-                                                    <img src="{{asset('assets/imgs/profile/images.jpg')}}" class="rounded-circle"/>
+                                                    <img src="{{asset('assets/imgs/profile/image1s.jpg')}}" class="rounded-circle"/>
                                                 @endif
                                                   </div>
                                                 </div>

@@ -45,7 +45,7 @@
                 @elseif($image)
                     <img src="{{asset('assets/imgs/profile')}}/{{$user->profile->image}}" class="img-account-profile rounded-circle mb-2" />
                 @else
-                    <img src="{{asset('assets/imgs/profile/images.jpg')}}" class="img-account-profile rounded-circle mb-2" />
+                    <img src="{{asset('assets/imgs/profile/image1s.jpg')}}" class="img-account-profile rounded-circle mb-2" />
                 @endif
                 
                  <input type="file" class="form-control" wire:model="newimage" />
@@ -126,7 +126,6 @@
 </section>
 </main>
 </div>
-
 
 
 

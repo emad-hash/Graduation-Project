@@ -268,8 +268,12 @@
                                                         <div class="single-comment justify-content-between d-flex">
                                                             <div class="user justify-content-between d-flex">
                                                                 <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-6.jpg" alt="">
-                                                                    <h4><a href="#">{{$orderItem->order->user->name}}</a></h4>
+                                                                    @if($orderItem->order->user->profile->image)
+                                                    <img src="{{asset('assets/imgs/profile')}}/{{$orderItem->order->user->profile->image}}"/>
+                                                @else
+                                                    <img src="{{asset('assets/imgs/profile/image1s.jpg')}}" class="rounded-circle"/>
+                                                @endif
+                                                <h4><a href="#">{{$orderItem->order->user->name}}</a></h4>
                                                                 </div>
                                                                 <div class="desc">
                                                                     <div class="">
