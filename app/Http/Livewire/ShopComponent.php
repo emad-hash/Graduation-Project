@@ -59,7 +59,7 @@ class ShopComponent extends Component
         else{
             $products = Product::whereBetween('regular_price',[$this->min_value,$this->max_value])->paginate($this->pageSize);
         }
-        $categories =  Category::orderBY('name' , 'ASC')->get();
+        $categories =  Category::orderBY('created_at','ASC')->get();
         return view('livewire.shop-component', ['products'=> $products,'categories'=>$categories ]);
     }
 }

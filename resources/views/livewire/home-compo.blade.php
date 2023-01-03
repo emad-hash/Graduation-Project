@@ -149,49 +149,52 @@
 
                 <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="tab-three">
                     <div class="row product-grid-4">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
-                            <div class="product-cart-wrap mb-30">
-                                <div class="product-img-action-wrap">
-                                    <div class="product-img product-img-zoom">
-                                        <a href="product-details.html">
-                                            <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
-
-                                        </a>
-                                    </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn hover-up"
-                                            data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                class="fi-rs-eye"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
-                                            class="fi-rs-shuffle"></i></a>
-                                    </div>
+                        @foreach ($nproducts as $nproduct)
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{{route('product.details',['slug'=>$nproduct->slug])}}">
+                                                <img class="default-img" src="{{asset('assets/imgs/products')}}/{{$nproduct->image}}" alt="">
+                                            </a>
+                                        </div>
+                                        
+                                        
                                     <div class="product-badges product-badges-position product-badges-mrg">
                                         <span class="hot">Fabulous</span>
                                     </div>
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">MDF wood panels</a>
+                                            
+                                        <a href="#">{{$nproduct->category->name }}</a>
+
                                     </div>
-                                    <h2><a href="product-details.html">Horse design wooden board</a></h2>
-                                    <div class="rating-result" title="90%">
+                                    <h2><a href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h2>
+                                    {{-- <div class="rating-result" title="90%">
                                         <span>
                                             <span>90%</span>
                                         </span>
-                                    </div>
+                                    </div> --}}
                                     <div class="product-price">
-                                        <span>15 JD</span>
-                                        <span class="old-price">29 JD</span>
+                                        <span>{{$nproduct->regular_price}} JD </span>
+                                        {{-- <span class="old-price">46 JD</span> --}}
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i
+                                        {{-- @if ($witems->contains($fproduct->id))
+                                        <a aria-label="Remove From Wishlist" class="action-btn hover-up Wishlisted" href="#" wire:click.prevent="removeFromWishlist({{ $fproduct->id}})"><i class="fi-rs-heart"></i></a>
+                                        @else
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="AddToWishlist({{ $fproduct->id}}, '{{ $fproduct-> name}}','{{ $fproduct-> regular_price}}')"><i class="fi-rs-heart"></i></a>
+                                      @endif --}}
+                                       
+                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="#" wire:click.prevent="store({{$nproduct->id}},'{{ $nproduct->name}}',{{ $nproduct->regular_price}})"><i
                                             class="fi-rs-shopping-bag-add"></i></a>
-                                    </div>
+                                        </div> 
                                 </div>
                             </div>
+
                         </div>
+                        @endforeach
                     </div>
                     <!--End product-grid-4-->
                 </div>
@@ -252,21 +255,22 @@
     <!-- end New Arrivals -->
 
     <!-- Canvas Paintings -->
-    {{-- <section class="section-padding">
+    <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>Canvas </span>Paintings</h3>
             <div class="carausel-6-columns-cover position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-7-columns-2-arrows">
                 </div>
                 <div class="carausel-6-columns carausel-arrow-center" id="carausel-7-columns-2">
+                    @foreach ($cproducts  as $cproduct )     
                     <div class="product-cart-wrap small hover-up">
                         <div class="product-img-action-wrap">
                             <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Canvas-1-1.jpg" alt="" >
+                                <a href="{{route('product.details',['slug'=>$cproduct->slug])}}">
+                                    <img class="default-img" src="{{asset('assets/imgs/products')}}/{{$cproduct->image}}"  alt="">
                                 </a>
                             </div>
-                            <div class="product-action-1">
+                            {{-- <div class="product-action-1">
                                 <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
                                     data-bs-target="#quickViewModal">
                                     <i class="fi-rs-eye"></i></a>
@@ -274,239 +278,47 @@
                                     href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
                                 <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
                                     tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
+                            </div> --}}
                             <div class="product-badges product-badges-position product-badges-mrg">
                                 <span class="hot">Fabulous</span>
                             </div>
                         </div>
                         <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Canvas Painting Decoration Abstract Design</a></h2>
+                            <h2><a href="{{route('product.details',['slug'=>$cproduct->slug])}}">{{$cproduct->name}}</a></h2>
                             <div class="rating-result" title="90%">
                                 <span>
                                 </span>
                             </div>
                             <div class="product-price">
-                                <span>18 JD </span>
-                                <span class="old-price">28 JD</span>
+                                <span>{{$cproduct->regular_price}} JD </span>
+                                {{-- <span class="old-price">28 JD</span> --}}
                             </div>
                         </div>
                     </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Canvas-2-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Canvas Painting With The Design Of A Woman</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>28 JD </span>
-                                <span class="old-price">45 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Canvas-3-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="sale">Sale</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Flowers Canvas Painting</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>16 JD </span>
-                                <span class="old-price">30 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Canvas-4-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-33%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Tree Canvas Painting</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                                <span class="old-price">29 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Canvas-5-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-25%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Mountain Design Canvas Painting</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Canvas-6-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">City Canvas Painting</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Canvas-7-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Design Canvas Painting</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>20 JD </span>
-                                <span class="old-price">46 JD</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!--End product-cart-wrap-2-->
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- end  Canvas Paintings -->
     <!-- MDF Wood Panels -->
-    {{-- <section class="section-padding">
+    <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>MDF Wood  </span>Panels</h3>
             <div class="carausel-6-columns-cover position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-8-columns-2-arrows">
                 </div>
                 <div class="carausel-6-columns carausel-arrow-center" id="carausel-8-columns-2">
+                    @foreach ($mproducts  as $mproduct )     
                     <div class="product-cart-wrap small hover-up">
                         <div class="product-img-action-wrap">
                             <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/MDF-1-1.jpg" alt="" >
+                                <a href="{{route('product.details',['slug'=>$mproduct->slug])}}">
+                                    <img class="default-img" src="{{asset('assets/imgs/products')}}/{{$mproduct->image}}"  alt="">
                                 </a>
                             </div>
-                            <div class="product-action-1">
+                            {{-- <div class="product-action-1">
                                 <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
                                     data-bs-target="#quickViewModal">
                                     <i class="fi-rs-eye"></i></a>
@@ -514,239 +326,47 @@
                                     href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
                                 <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
                                     tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
+                            </div> --}}
                             <div class="product-badges product-badges-position product-badges-mrg">
                                 <span class="hot">Fabulous</span>
                             </div>
                         </div>
                         <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Abstract wooden decorative panel</a></h2>
+                            <h2><a href="{{route('product.details',['slug'=>$mproduct->slug])}}">{{$mproduct->name}}</a></h2>
                             <div class="rating-result" title="90%">
                                 <span>
                                 </span>
                             </div>
                             <div class="product-price">
-                                <span>16 JD </span>
-                                <span class="old-price">26 JD</span>
+                                <span>{{$mproduct->regular_price}} JD </span>
+                                {{-- <span class="old-price">28 JD</span> --}}
                             </div>
                         </div>
                     </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/MDF-2-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Wooden decorative plate, two pieces</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>20 JD </span>
-                                <span class="old-price">45 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/MDF-3-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="sale">Sale</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Wooden decorative painting with a girl design</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>16 JD </span>
-                                <span class="old-price">30 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/MDF-4-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-33%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Wooden Decorative Painting With Horse Design</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                                <span class="old-price">29 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Canvas-5-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-25%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Wooden Decorative Painting With Horse Design</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/MDF-6-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Football World Cup Sports Wooden Board</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/MDF-7-1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Football World Cup Sports Wooden Board</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!--End product-cart-wrap-2-->
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- end  MDF Wood Panels -->
     <!-- WATCHES -->
-    {{-- <section class="section-padding">
+    <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>WATCHES</span></h3>
             <div class="carausel-6-columns-cover position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-9-columns-2-arrows">
                 </div>
                 <div class="carausel-6-columns carausel-arrow-center" id="carausel-9-columns-2">
+                    @foreach ($wproducts  as $wproduct )     
                     <div class="product-cart-wrap small hover-up">
                         <div class="product-img-action-wrap">
                             <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/WATCHES-1-1.jpg" alt="" >
+                                <a href="{{route('product.details',['slug'=>$wproduct->slug])}}">
+                                    <img class="default-img" src="{{asset('assets/imgs/products')}}/{{$wproduct->image}}"  alt="">
                                 </a>
                             </div>
-                            <div class="product-action-1">
+                            {{-- <div class="product-action-1">
                                 <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
                                     data-bs-target="#quickViewModal">
                                     <i class="fi-rs-eye"></i></a>
@@ -754,239 +374,47 @@
                                     href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
                                 <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
                                     tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
+                            </div> --}}
                             <div class="product-badges product-badges-position product-badges-mrg">
                                 <span class="hot">Fabulous</span>
                             </div>
                         </div>
                         <div class="product-content-wrap">
-                            <h2><a href="product-details.html">wooden wall clock</a></h2>
+                            <h2><a href="{{route('product.details',['slug'=>$wproduct->slug])}}">{{$wproduct->name}}</a></h2>
                             <div class="rating-result" title="90%">
                                 <span>
                                 </span>
                             </div>
                             <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">26 JD</span>
+                                <span>{{$wproduct->regular_price}} JD </span>
+                                {{-- <span class="old-price">28 JD</span> --}}
                             </div>
                         </div>
                     </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/WATCHES-2-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">acrylic wall clock</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">26 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/WATCHES-3-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="sale">Sale</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">acrylic wall clock</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>13 JD </span>
-                                <span class="old-price">30 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/WATCHES-4-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-33%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">acrylic wall clock</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                                <span class="old-price">29 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/WATCHES-5-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-25%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">acrylic wall clock</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/WATCHES-6-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">wooden wall clock</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/WATCHES-7-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">wooden wall clock</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!--End product-cart-wrap-2-->
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- end WATCHES -->
     <!-- Large Murals -->
-    {{-- <section class="section-padding">
+    <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>Large </span>Murals</h3>
             <div class="carausel-6-columns-cover position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-10-columns-2-arrows">
                 </div>
                 <div class="carausel-6-columns carausel-arrow-center" id="carausel-10-columns-2">
+                    @foreach ($laproducts  as $laproduct )     
                     <div class="product-cart-wrap small hover-up">
                         <div class="product-img-action-wrap">
                             <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Large-1-1.jpg" alt="" >
+                                <a href="{{route('product.details',['slug'=>$laproduct->slug])}}">
+                                    <img class="default-img" src="{{asset('assets/imgs/products')}}/{{$laproduct->image}}"  alt="">
                                 </a>
                             </div>
-                            <div class="product-action-1">
+                            {{-- <div class="product-action-1">
                                 <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
                                     data-bs-target="#quickViewModal">
                                     <i class="fi-rs-eye"></i></a>
@@ -994,239 +422,47 @@
                                     href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
                                 <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
                                     tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
+                            </div> --}}
                             <div class="product-badges product-badges-position product-badges-mrg">
                                 <span class="hot">Fabulous</span>
                             </div>
                         </div>
                         <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Design Canvas Painting With Frame</a></h2>
+                            <h2><a href="{{route('product.details',['slug'=>$laproduct->slug])}}">{{$laproduct->name}}</a></h2>
                             <div class="rating-result" title="90%">
                                 <span>
                                 </span>
                             </div>
                             <div class="product-price">
-                                <span>15 JD </span>
-                                <span class="old-price">26 JD</span>
+                                <span>{{$laproduct->regular_price}} JD </span>
+                                {{-- <span class="old-price">28 JD</span> --}}
                             </div>
                         </div>
                     </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Large-2-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Design Canvas Painting With Frame</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>17 JD </span>
-                                <span class="old-price">36 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Large-3-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="sale">Sale</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Design Canvas Painting With Frame</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>13 JD </span>
-                                <span class="old-price">30 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Large-4-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-33%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Design Canvas Painting With Frame</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                                <span class="old-price">29 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Large-5-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-25%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Design Canvas Painting With Frame</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Large-6-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Design Canvas Painting With Frame</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/Large-7-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Modern Design Canvas Painting With Frame</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!--End product-cart-wrap-2-->
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- end Large Murals -->
     <!-- three-piece plate -->
-    {{-- <section class="section-padding">
+    <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>Three-piece  </span>Plate</h3>
             <div class="carausel-6-columns-cover position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-11-columns-2-arrows">
                 </div>
                 <div class="carausel-6-columns carausel-arrow-center" id="carausel-11-columns-2">
+                    @foreach ($tproducts  as $tproduct )     
                     <div class="product-cart-wrap small hover-up">
                         <div class="product-img-action-wrap">
                             <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/three-piece-1-1.jpg" alt="" >
+                                <a href="{{route('product.details',['slug'=>$tproduct->slug])}}">
+                                    <img class="default-img" src="{{asset('assets/imgs/products')}}/{{$tproduct->image}}"  alt="">
                                 </a>
                             </div>
-                            <div class="product-action-1">
+                            {{-- <div class="product-action-1">
                                 <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
                                     data-bs-target="#quickViewModal">
                                     <i class="fi-rs-eye"></i></a>
@@ -1234,222 +470,29 @@
                                     href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
                                 <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
                                     tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
+                            </div> --}}
                             <div class="product-badges product-badges-position product-badges-mrg">
                                 <span class="hot">Fabulous</span>
                             </div>
                         </div>
                         <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Three wooden panels with a modern design</a></h2>
+                            <h2><a href="{{route('product.details',['slug'=>$tproduct->slug])}}">{{$tproduct->name}}</a></h2>
                             <div class="rating-result" title="90%">
                                 <span>
                                 </span>
                             </div>
                             <div class="product-price">
-                                <span>15 JD </span>
-                                <span class="old-price">26 JD</span>
+                                <span>{{$tproduct->regular_price}} JD </span>
+                                {{-- <span class="old-price">28 JD</span> --}}
                             </div>
                         </div>
                     </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/three-piece-2-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Three Islamic wooden panels</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>17 JD </span>
-                                <span class="old-price">36 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/three-piece-3-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="sale">Sale</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Three modern wooden panels</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>13 JD </span>
-                                <span class="old-price">30 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/three-piece-4-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-33%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Three modern wooden panels</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                                <span class="old-price">29 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/three-piece-5-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">-25%</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Three modern wooden panels</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>15 JD </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/three-piece-6-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="new">New</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Three modern wooden panels</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End product-cart-wrap-2-->
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="product-details.html">
-                                    <img class="default-img" src="assets/imgs/shop/three-piece-7-1.jpg" alt="" >
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                    href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
-                                    tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="product-details.html">Three Wooden Boards SQUID GAME Series Design</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>10 JD </span>
-                                <span class="old-price">25 JD</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!--End product-cart-wrap-2-->
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- end  three-piece plate -->
 
 </main>

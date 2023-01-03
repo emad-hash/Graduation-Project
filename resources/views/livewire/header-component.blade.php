@@ -79,87 +79,33 @@
                             </a>
                             <div class="categori-dropdown-wrap categori-dropdown-active-large">
                                 <ul>
-                                    <li class="has-children">
-                                        <a href="shop.html"><i class="surfsidemedia-font-dress"></i>CANVAS PAINTINGS</a>
+                                    @foreach ( $categories as $category )
+                                        
+                                    <li class="{{count($category->subCategories) > 0 ? 'has-children':''}}">
+                                        <a href="{{route('product.category',['slug'=>$category->slug])}}"><i class="surfsidemedia-font-dress"></i>{{ $category-> name}}</a>
+                                        @if(count($category->subCategories)>0)
                                         <div class="dropdown-menu">
                                             <ul class="mega-menu d-lg-flex">
                                                 <li class="mega-menu-col col-lg-7">
                                                     <ul class="d-lg-flex">
                                                         <li class="mega-menu-col col-lg-6">
                                                             <ul>
-                                                                <!-- <li><span class="submenu-title">Hot & Trending</span>
-                                                                </li> -->
+                                                                @foreach($category->subCategories as $scategory)
                                                                 <li><a class="dropdown-item nav-link nav_item"
-                                                                        href="#">modern</a></li>
-                                                                <li><a class="dropdown-item nav-link nav_item"
-                                                                        href="#">Islamic & decorations</a></li>
-                                                                <li><a class="dropdown-item nav-link nav_item"
-                                                                        href="#">Expressions</a></li>
+                                                                        href="{{route('product.category',['slug'=>$category->slug,'scategory_slug'=>$scategory->slug])}}">{{$scategory->name}}</a>
+                                                                </li>
+                                                                @endforeach
                                                             </ul>
                                                         </li>
                                                         
                                                     </ul>
                                                 </li>
-                                                
                                             </ul>
                                         </div>
+                                        @endif
                                     </li>
-                                    <li class="has-children">
-                    <a href="shop.html"><i class="surfsidemedia-font-tshirt"></i>MFD Wood Panels</a>
-                                        <div class="dropdown-menu">
-                                            <ul class="mega-menu d-lg-flex">
-                                                <li class="mega-menu-col col-lg-7">
-                                                    <ul class="d-lg-flex">
-                                                        <li class="mega-menu-col col-lg-6">
-                                                            <ul>
-                                                                
-                                                                <li><a class="dropdown-item nav-link nav_item"
-                                                                    href="#">modern</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item"
-                                                                    href="#">Islamic & decorations</a></li>
-                                                            <li><a class="dropdown-item nav-link nav_item"
-                                                                    href="#">Expressions</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                </li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="has-children">
-                                        <a href="shop.html"><i class="surfsidemedia-font-smartphone"></i> WATCHES</a>
-                                        <div class="dropdown-menu">
-                                            <ul class="mega-menu d-lg-flex">
-                                                <li class="mega-menu-col col-lg-7">
-                                                    <ul class="d-lg-flex">
-                                                        <li class="mega-menu-col col-lg-6">
-                                                            <ul>
-                                                              
-                                                                <li><a class="dropdown-item nav-link nav_item"
-                                                                        href="#">acrylic watches</a></li>
-                                                                <li><a class="dropdown-item nav-link nav_item"
-                                                                        href="#">wooden decorative clocks</a></li>
-                                                                <li><a class="dropdown-item nav-link nav_item"
-                                                                        href="#">Sticker Watches</a></li>
-                                                                 
-                                                            </ul>
-                                                        </li>
-                                                       
-                                                    </ul>
-                                                </li>
-                                              
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>
-                                        large murals </a></li>
-                                        <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>
-                                            THREE-PIECE PLATE</a></li>
-                                    
-                                    </ul>
-                                <div class="more_categories">Show more...</div>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block" style="margin-left: 60px ;">
@@ -173,32 +119,18 @@
                                     <li class="position-static"><a href="#">Our Collections <i
                                                 class="fi-rs-angle-down"></i></a>
                                         <ul class="mega-menu">
-                                            <li class="sub-mega-menu sub-mega-menu-width-25">
-                                                <a class="menu-title" href="#">CANVAS PAINTINGS</a>
+                                            @foreach ( $categories as $category )
+                                            <li class=" sub-mega-menu-width-22 {{count($category->subCategories) > 0 ? 'sub-mega-menu':''}}">
+                                                <a class="menu-title" href="#">{{$category->name}}</a>
+                                        @if(count($category->subCategories)>0)
                                                 <ul>
-                                                    <li><a href="product-details.html">modern</a></li>
-                                                    <li><a href="product-details.html">Islamic & decorations</a></li>
-                                                    <li><a href="product-details.html">Expressions</a></li>
+                                                    @foreach($category->subCategories as $scategory)
+                                                    <li><a href="{{route('product.category',['slug'=>$category->slug,'scategory_slug'=>$scategory->slug])}}">{{$scategory->name}}</a></li>
+                                                    @endforeach
                                                 </ul>
-                                            </li>
-                                            <li class="sub-mega-menu sub-mega-menu-width-25">
-                                                <a class="menu-title" href="#">MFD Wood Panels</a>
-                                                <ul>
-                                                    <li><a href="product-details.html">modern</a></li>
-                                                    <li><a href="product-details.html">Islamic & decorations</a></li>
-                                                    <li><a href="product-details.html">Expressions</a></li>
-                                                    
-                                                </ul>
-                                            </li>
-                                            <li class="sub-mega-menu sub-mega-menu-width-25 ">
-                                                <a class="menu-title" href="#">WATCHES</a>
-                                                <ul>
-                                                    <li><a href="product-details.html">acrylic watches</a></li>
-                                                    <li><a href="product-details.html">wooden decorative clocks</a></li>
-                                                    <li><a href="product-details.html">Sticker Watches</a></li>
-                                                </ul>
-                                            </li>
-                                           
+                                        @endif
+                                            </li>  
+                                            @endforeach                                          
                                         </ul>
                                     </li>
                                     

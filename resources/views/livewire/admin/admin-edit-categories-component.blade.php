@@ -53,6 +53,17 @@
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
+                                @if ($scategory_id)
+                                <div class="mb-3 mt-3">
+                                    <label for="slug" class="form-label">Parent Category</label>
+                                    <select class="form-control" wire:model="category_id">
+                                        <option value="">Select</option>
+                                        @foreach ($categories as $category)
+                                        <option value="{{$category->id}}" class="form-control" >{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @endif
                                <button type="submit" class="btn btn-primary float-en">Update</button>
                                </form>
                             </div>

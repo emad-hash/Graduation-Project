@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
@@ -29,6 +30,8 @@ class AdminEditProductComponent extends Component
     public $image;
     public $category_id;
     public $newimage;
+    public $scategory_id; 
+
 
     public function mount($product_id){
         $product = Product::find($product_id);
@@ -45,8 +48,12 @@ class AdminEditProductComponent extends Component
         $this->quantity = $product->quantity;
         $this->image = $product->image;
         $this->category_id = $product->category_id;
-
+        $this->scategory_id = $product->scategory_id;
     }
+
+    public function changeSubcategory(){
+        $this->scategory_id = 0;
+        }
 
     public function generateSlug(){
         $this->slug = Str::slug($this->name);
@@ -67,8 +74,8 @@ class AdminEditProductComponent extends Component
             'featured'=> 'required',
             'quantity'=> 'required',
             'image'=> 'required',
-            'category_id'=> 'required'
-
+            'category_id'=> 'required',
+            'scategory_id'=> 'required'
         ]);
         
         $product = Product::find($this->product_id);
@@ -89,7 +96,9 @@ class AdminEditProductComponent extends Component
             $product->image = $imageName;
         }
         $product->category_id = $this->category_id;
-        
+        if ($this->scategory_id) {
+            $product->subcategory_id = $this->scategory_id;
+        }
         $product->save();
 
         $this->alert('success','Product has been Update successfully', [
@@ -101,15 +110,14 @@ class AdminEditProductComponent extends Component
             'timerProgressBar' => true,
 
            ]);
-           return redirect()->back();
-
-        
+           return redirect()->to('/admin/products');
 
     }
 
     public function render()
     {
         $categories = Category::orderBy('name','ASC')->get();
-        return view('livewire.admin.admin-edit-product-component',['categories'=>$categories]);
+        $scategories = Subcategory::where('category_id',$this->category_id)->get();
+        return view('livewire.admin.admin-edit-product-component',['categories'=>$categories,'scategories'=>$scategories]);
     }
 }

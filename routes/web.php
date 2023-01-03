@@ -73,7 +73,7 @@ Route::get('/wishlist',WishlistComponent::class)->name('shop.wishlist');
 
 Route::get('/checkout',CheckoutComponent::class)->name('checkout');
 
-Route::get('/product-category/{slug}',CatrgoryComponent::class)->name('product.category');
+Route::get('/product-category/{slug}/{scategory_slug?}',CatrgoryComponent::class)->name('product.category');
 
 Route::get('/search',SearchComponent::class)->name('product.search');
 
@@ -106,7 +106,7 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
     Route::get('/admin/categories',AdminCategoriesComponent::class)->name('admin.categories');
     Route::get('/admin/category/add',AdminAddCategoriesComponent::class)->name('admin.category.add');
-    Route::get('/admin/category/edit/{category_id}',AdminEditCategoriesComponent::class)->name('admin.category.edit');
+    Route::get('/admin/category/edit/{category_id}/{scategory_id?}',AdminEditCategoriesComponent::class)->name('admin.category.edit');
     Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');
     Route::get('/admin/products/add',AdminAddProductComponent::class)->name('admin.product.add');
     Route::get('/admin/products/edit/{product_id}',AdminEditProductComponent::class)->name('admin.product.edit');

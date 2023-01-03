@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Admin;
 
+use livewire;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
@@ -27,10 +29,17 @@ class AdminAddProductComponent extends Component
     public $quantity;
     public $image;
     public $category_id;
-
+    public $scategory_id; 
+    
     public function generateSlug(){
         $this->slug = Str::slug($this->name);
     }
+    
+    public function changeSubcategory(){
+        $this->scategory_id = 0;
+        }
+    
+
    
     public function addProduct(){
         $this->validate([
@@ -45,7 +54,8 @@ class AdminAddProductComponent extends Component
             'featured'=> 'required',
             'quantity'=> 'required',
             'image'=> 'required',
-            'category_id'=> 'required'
+            'category_id'=> 'required',
+            'scategory_id'=> 'required'
 
         ]);
         $product = new Product();
@@ -63,6 +73,9 @@ class AdminAddProductComponent extends Component
         $this->image->storeAs('products',$imageName);
         $product->image = $imageName;
         $product->category_id = $this->category_id;
+        if ($this->scategory_id) {
+            $product->subcategory_id = $this->scategory_id;
+        }
         $product->save();
         $this->alert('success','Product has been created successfully', [
             'position' => 'center',
@@ -79,6 +92,7 @@ class AdminAddProductComponent extends Component
     public function render()
     {
         $categories = Category::orderBy('name','ASC')->get();
-        return view('livewire.admin.admin-add-product-component',['categories'=>$categories]);
+        $scategories = Subcategory::where('category_id',$this->category_id)->get();
+        return view('livewire.admin.admin-add-product-component',['categories'=>$categories,'scategories'=>$scategories]);
     }
 }

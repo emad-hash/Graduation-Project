@@ -132,13 +132,25 @@
                                 </div> 
                                 <div class="mb-3 mt-3">
                                     <label for="category_id " class="form-label">Category</label>
-                                    <select class="form-control" name="category_id " wire:model="category_id" >
+                                    <select class="form-control" name="category_id " wire:model="category_id" wire:change="changeSubcategory">
                                         <option value="" class="form-control" >Select Category</option>
                                         @foreach ($categories as $category )
                                         <option value="{{$category->id}}" class="form-control" >{{$category->name}}</option>
                                         @endforeach
                                     </select>
                                     @error('category_id')
+                                        <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="category_id " class="form-label">Sub Category</label>
+                                    <select class="form-control" name="scategory_id " wire:model="scategory_id" >
+                                        <option value="0" class="form-control" >Select Sub Category</option>
+                                        @foreach ($scategories as $scategory )
+                                        <option value="{{$scategory->id}}" class="form-control" >{{$scategory->name}}</option>
+                                        @endforeach
+                                    </select>   
+                                    @error('scategory_id')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>

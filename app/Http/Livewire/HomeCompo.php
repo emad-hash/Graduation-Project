@@ -37,7 +37,13 @@ class HomeCompo extends Component
         
         $slides = HomeSlider::where('status',1)->get();
         $lprodects = Product::orderBy('created_at','DESC')->get()->take(8);
+        $nprodects = Product::orderBy('created_at','DESC')->get()->take(8);
         $fprodects = Product::where('featured',1)->get()->take(8);
-        return view('livewire.home-compo',['slides'=>$slides,'lproducts'=>$lprodects,'fproducts'=>$fprodects]);
+        $cprodects = Product::where('category_id',1)->orderBy('category_id','DESC')->get()->take(8);
+        $mprodects = Product::where('category_id',2)->orderBy('category_id','DESC')->get()->take(8);
+        $wprodects = Product::where('category_id',4)->orderBy('category_id','DESC')->get()->take(8);
+        $laprodects = Product::where('category_id',10)->orderBy('category_id','DESC')->get()->take(8);
+        $tprodects = Product::where('category_id',5)->orderBy('category_id','DESC')->get()->take(8);
+        return view('livewire.home-compo',['slides'=>$slides,'lproducts'=>$lprodects,'fproducts'=>$fprodects, 'cproducts'=>$cprodects, 'mproducts'=>$mprodects, 'wproducts'=>$wprodects, 'laproducts'=>$laprodects, 'tproducts'=>$tprodects,'nproducts'=>$nprodects]);
     }
 }

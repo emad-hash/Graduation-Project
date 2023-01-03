@@ -9,6 +9,9 @@
         .card {
          box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
        }
+       .sclist{
+        list-style: none;
+       }
     </style>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
@@ -39,12 +42,13 @@
                                  @if(Session::has('massege'))
                                  <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                  @endif
-                                <table class="table table-striped">
+                                <table class="table table-striped ">
                                     <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>slug</th>
+                                            <th>Sub Category</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -57,6 +61,15 @@
                                         <td>{{++$i}}</td>
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->slug}}</td>
+                                        <td>
+                                            <ul class="sclist">
+                                                @foreach ($category->subcategories as $scategory )
+                                                    <li><i class="fa fa-caret-right"></i> {{$scategory->name}} <a href="{{route('admin.category.edit',['category_id'=>$category->id ,'scategory_id'=>$scategory->id])}}" class="text-info">Edit</a>
+                                                        <a href="#" class="text-danger" onclick="confirm('Are you sure , You want to delete this subcategory?') || event.stopImmediatePropagation()" wire:click.prevent="deleteSubcategory({{$scategory->id}})"  style="margin-left: 20px">Delete</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
                                         <td>
                                         <a href="{{route('admin.category.edit',['category_id'=>$category->id])}}" class="text-info">Edit</a>
                                     <a href="#" class="text-danger" onclick="deleteConfirmation({{$category->id}})"  style="margin-left: 20px">Delete</a>
