@@ -141,6 +141,9 @@ class CheckoutComponent extends Component
             $shipping->country = $this->s_country;
             $shipping->zipcode = $this->s_zipcode;
             $shipping->save();
+
+            $this->resetCart();
+
         }
 
 
@@ -153,7 +156,7 @@ class CheckoutComponent extends Component
             $transaction->status = 'pending';
             $transaction->save();   
             // $this->makeTransaction($order->id,'pending');
-            // $this->resetCart();
+            $this->resetCart();
         }         
         $this->thankyou = 1 ; 
         Cart::instance('Cart')->destroy();
@@ -172,12 +175,12 @@ class CheckoutComponent extends Component
         }
     }
 
-    // public function resetCart()
-    // {
-    //     $this->thankyou = 1;
-    //     Cart::instance('cart')->destroy();
-    //     session()->forget('checkout'); 
-    // }
+    public function resetCart()
+    {
+        $this->thankyou = 1;
+        Cart::instance('cart')->destroy();
+        session()->forget('checkout'); 
+    }
     
     public function render()
     {
