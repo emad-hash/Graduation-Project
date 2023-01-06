@@ -140,31 +140,15 @@
                             </div>
                             <div class="price-filter">
                                 <div class="price-filter-inner">
-                                  <div id="slider-range" wire:ignore></div>
+                                  <div id="slider-range" wire:ignore ></div>
                                   <div class="price_slider_amount">
                                     <div class="label-input">
-                                      <span>Range:</span> <span class="text-info">{{$min_value}} JD</span> - <span class="text-info">{{$max_value}} JD</span>
+                                        <span>Range:</span> <span class="text-info">{{$min_value}} JD</span> - <span class="text-info">{{$max_value}} JD</span>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            <div class="list-group">
-                                <div class="list-group-item mb-10 mt-10">
-                                   
-                                    <label class="fw-900 mt-15">Item Condition</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="">
-                                        <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="">
-                                        <label class="form-check-label" for="exampleCheckbox21"><span>Large Murals (27)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="">
-                                        <label class="form-check-label" for="exampleCheckbox31"><span>three-piece plate (45)</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+                            
                         </div>
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
@@ -172,53 +156,47 @@
                                 <h5 class="widget-title mb-10">New products</h5>
                                 <div class="bt-1 border-color-1"></div>
                             </div>
+                            @foreach ($nproducts as $nproduct )
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="{{ asset('assets/imgs/shop/WATCHES-1-1.jpg')}}" alt="#">
+                                    <img src="{{asset('assets/imgs/products')}}/{{$nproduct->image}}" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h5><a href="product-details.html">Wooden wall clock</a></h5>
-                                    <p class="price mb-0 mt-5">10 JD</p>
+                                    <h5><a href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h5>
+                                    <p class="price mb-0 mt-5">{{$nproduct->regular_price}} JD</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="{{ asset('assets/imgs/shop/WATCHES-2-1.jpg')}}" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="product-details.html">Acrylic wall clock</a></h6>
-                                    <p class="price mb-0 mt-5">10 JD</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="{{ asset('assets/imgs/shop/WATCHES-3-1.jpg')}}" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="product-details.html">Acrylic wall clock</a></h6>
-                                    <p class="price mb-0 mt-5"> 13 JD</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:60%"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                            
                         </div>
-                        <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
-                            <img src="{{ asset('assets/imgs/banner/1056829_OLPWSR0.jpg')}}" alt="">
-                            <div class="banner-text">
-                                <span> Large Murals </span>
-                                <h4>Save 17% on  <br>Some Murals</h4>
-                                <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </section>
-    </main></div>
+    </main>
+</div>
+
+@push('scripts')
+<script>
+  var sliderrange = $('#slider-range');
+  var amountprice = $('#amount');
+  $(function() {
+    sliderrange.slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [0, 500],
+      slide: function (event, ui) {
+        //amountprice.val("$" + ui.values[0] + " - $" + ui.values[1]);
+        @this.set('min_value', ui.values[0]);
+        @this.set('max_value', ui.values[1]);
+      }
+    });
+         
+      });
+</script>
+@endpush

@@ -146,6 +146,7 @@
                                     <label for="category_id " class="form-label">Sub Category</label>
                                     <select class="form-control" name="scategory_id " wire:model="scategory_id" >
                                         <option value="0" class="form-control" >Select Sub Category</option>
+                                        <option value="0" class="form-control" >No Sub Category</option>
                                         @foreach ($scategories as $scategory )
                                         <option value="{{$scategory->id}}" class="form-control" >{{$scategory->name}}</option>
                                         @endforeach

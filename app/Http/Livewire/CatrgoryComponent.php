@@ -57,18 +57,19 @@ class CatrgoryComponent extends Component
         }
         
         if($this->orderBy == 'Price: Low to High'){
-            $products = Product::where($filter.'category_id',$category_id)->orderBy('regular_price', 'ASC')->paginate($this->pageSize);
+            $products = Product::where($filter.'category_id',$category_id)->whereBetween('regular_price',[$this->min_value,$this->max_value])->orderBy('regular_price', 'ASC')->paginate($this->pageSize);
         }
         elseif($this->orderBy == 'Price: High to Low'){
-            $products = Product::where($filter.'category_id',$category_id)->orderBy('regular_price', 'DESC')->paginate($this->pageSize);
+            $products = Product::where($filter.'category_id',$category_id)->whereBetween('regular_price',[$this->min_value,$this->max_value])->orderBy('regular_price', 'DESC')->paginate($this->pageSize);
         }
         elseif($this->orderBy == 'sort By Newness'){
-            $products = Product::where($filter.'category_id',$category_id)->orderBy('created_at', 'DESC')->paginate($this->pageSize);
+            $products = Product::where($filter.'category_id',$category_id)->whereBetween('regular_price',[$this->min_value,$this->max_value])->orderBy('created_at', 'DESC')->paginate($this->pageSize);
         }
         else{
-            $products = Product::where($filter.'category_id',$category_id)->paginate($this->pageSize);
+            $products = Product::where($filter.'category_id',$category_id)->whereBetween('regular_price',[$this->min_value,$this->max_value])->paginate($this->pageSize);
         }
         $categories =  Category::orderBY('name' , 'ASC')->get();
-        return view('livewire.catrgory-component', ['products'=> $products,'categories'=>$categories,'category_name'=>$category_name]);
+        $nproducts = Product::inRandomOrder()->latest()->take(4)->get();
+        return view('livewire.catrgory-component', ['products'=> $products,'categories'=>$categories,'category_name'=>$category_name,'nproducts'=>$nproducts]);
     }
 }

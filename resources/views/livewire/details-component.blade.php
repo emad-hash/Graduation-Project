@@ -105,13 +105,22 @@
       .width-100-percent{
         width: 100%;
       }
+      .product-extra-link2 .Wishlisted {
+        background-color: #F15412;
+        }
+        .Wishlisted i{
+            color: white;   
+        }
+        
     </style>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow">Home</a>
-                    <span></span> Wooden plaque with an Islamic drawing design
+                    <span></span> Details
+                    <span></span> {{$product->name}}
+
                 </div>
             </div>
         </div>
@@ -185,22 +194,28 @@
                                         </div>
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
-                                            <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                            </div>
+                                            {{-- <div class="detail-qty border radius">
+                                                @foreach ( Cart::instance('cart')->content() as $item )
+                                                <a href="#" class="qty-down" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"><i class="fi-rs-angle-small-down"></i></a>
+                                                <span class="qty-val">{{$item->qty}}</span>
+                                                <a href="#" class="qty-up" wire:click.prevent="increaseQuantity('{{$item->rowId}}')"><i class="fi-rs-angle-small-up"></i></a>
+                                                @endforeach
+                                            </div> --}}
                                             <div class="product-extra-link2">
-                        <button type="submit" class="button button-add-to-cart"  >Add to cart</button>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                    href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Compare" class="action-btn hover-up"
-                                                    href="compare.php"><i class="fi-rs-shuffle"></i></a>
+                                                @php
+                                                $witems = Cart::instance('Wishlist')->content()->pluck('id');
+                                         @endphp
+                                           <button type="submit" class="button button-add-to-cart" wire:click.prevent="store({{$product->id}},'{{ $product->name}}',{{ $product->regular_price}})">Add to cart</button>
+                                           @if ($witems->contains($product->id))
+        <a aria-label="Remove From Wishlist" class="action-btn hover-up Wishlisted" href="#" wire:click.prevent="removeFromWishlist({{ $product->id}})"><i class="fi-rs-heart"></i></a>
+        @else
+        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="AddToWishlist({{ $product->id}}, '{{ $product-> name}}','{{ $product-> regular_price}}')"><i class="fi-rs-heart"></i></a>
+      @endif
+                                                    
                                             </div>
                                         </div>
                                         <ul class="product-meta font-xs color-grey mt-50">
-                                            <li>Availability:<span class="in-stock text-success ml-5">2 Items In
-                                                    Stock</span></li>
+                                            <li>Availability:<span class="in-stock text-success ml-5">{{$product->quantity}} Items {{$product->stock_status}}</span></li>
                                         </ul>
                                     </div>
                                     <!-- Detail Info -->
@@ -365,54 +380,10 @@
                         <div class="widget-category mb-30">
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                             <ul class="categories">
-                                <li><a href="shop.html">Canvas Paintings</a></li>
-                                <li><a href="shop.html">MDF Wood Panels</a></li>
-                                <li><a href="shop.html">WATCHES</a></li>
-                                <li><a href="shop.html">Large Murals</a></li>
-                                <li><a href="shop.html">three-piece plate</a></li>
-                            </ul>
-                        </div>
-                        <!-- Fillter By Price -->
-                        <div class="sidebar-widget price_range range mb-30">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Fill by price</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            <div class="price-filter">
-                                <div class="price-filter-inner">
-                                    <div id="slider-range"></div>
-                                    <div class="price_slider_amount">
-                                        <div class="label-input">
-                                            <span>Range:</span><input type="text" id="amount" name="price"
-                                                placeholder="Add Your Price">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group">
-                                <div class="list-group-item mb-10 mt-10">
-
-                                    <label class="fw-900 mt-15">Item Condition</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox"
-                                            id="exampleCheckbox11" value="">
-                                        <label class="form-check-label" for="exampleCheckbox11"><span>New
-                                                (1506)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox"
-                                            id="exampleCheckbox21" value="">
-                                        <label class="form-check-label" for="exampleCheckbox21"><span>Large Murals
-                                                (27)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox"
-                                            id="exampleCheckbox31" value="">
-                                        <label class="form-check-label" for="exampleCheckbox31"><span>three-piece plate
-                                                (45)</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
-                                Fillter</a>
+                              @foreach ($categories as $category)
+                              <li><a href="{{route('product.category',['slug'=>$category->slug])}}">{{ $category-> name}}</a></li>
+                            @endforeach
+                          </ul>
                         </div>
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">

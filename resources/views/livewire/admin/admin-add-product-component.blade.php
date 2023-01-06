@@ -39,123 +39,140 @@
                                     <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                 @endif
                                <form  wire:submit.prevent="addProduct">
-                                <div class="mb-3 mt-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Name" wire:keyup="generateSlug" wire:model="name">
-                                    @error('name')
+                                 <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" name="name" class="form-control" placeholder="Enter Name" wire:keyup="generateSlug" wire:model="name">
+                                         @error('name')
                                         <p class="text-danger">{{$message}}</p>
-                                    @enderror
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="slug" class="form-label">Slug</label>
+                                        <input type="text" name="slug" class="form-control" placeholder="Enter Slug" wire:model="slug" >
+                                        @error('slug')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="slug" class="form-label">Slug</label>
-                                    <input type="text" name="slug" class="form-control" placeholder="Enter Slug" wire:model="slug" >
-                                    @error('slug')
+                                <!-- Form Row-->
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6" >
+                                        <label for="short_description" class="form-label">Short Description</label>
+                                        <textarea type="text" name="short_description" id="short_description" class="form-control" placeholder="Enter Short  Description" wire:model="short_description" ></textarea>
+                                        @error('short_description')
                                         <p class="text-danger">{{$message}}</p>
-                                    @enderror
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <label for="description" class="form-label"> Description</label>
+                                        <textarea type="text" name="description" id="description" class="form-control" placeholder="Enter  Description"wire:model="description"></textarea>
+                                        @error('description')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="short_description" class="form-label">Short Description</label>
-                                    <textarea type="text" name="short_description" class="form-control" placeholder="Enter Short  Description" wire:model="short_description" ></textarea>
-                                    @error('short_description')
+                                <!-- Form Row        -->
+                                <div class="row gx-3 mb-3">
+                                    <!-- Form Group (organization name)-->
+                                    <div class="col-md-4">
+                                        <label for="regular_price" class="form-label">Regular Price</label>
+                                        <input type="number" name="regular_price" class="form-control" placeholder="Enter Regular Price" wire:model="regular_price"  >
+                                        @error('regular_price')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <!-- Form Group (location)-->
+                                    <div class="col-md-4">
+                                        <label for="sale_price" class="form-label">Sale Price</label>
+                                        <input type="number" name="sale_price" class="form-control" placeholder="Enter Sale Price "  wire:model="sale_price" >
+                                        @error('sale_price')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                            
+                                    <div class="col-md-4">
+                                        <label for="SKU" class="form-label">SKU</label>
+                                        <input type="text" name="SKU" class="form-control" placeholder="Enter SKU"  wire:model="SKU">
+                                         @error('SKU')
                                         <p class="text-danger">{{$message}}</p>
-                                    @enderror
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="description" class="form-label"> Description</label>
-                                    <textarea type="text" name="description" class="form-control" placeholder="Enter  Description"wire:model="description"></textarea>
-                                    @error('description')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="regular_price" class="form-label">Regular Price</label>
-                                    <input type="number" name="regular_price" class="form-control" placeholder="Enter Regular Price" wire:model="regular_price"  >
-                                    @error('regular_price')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="sale_price" class="form-label">Sale Price</label>
-                                    <input type="number" name="sale_price" class="form-control" placeholder="Enter Sale Price "  wire:model="sale_price" >
-                                    @error('sale_price')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="SKU" class="form-label">SKU</label>
-                                    <input type="text" name="SKU" class="form-control" placeholder="Enter SKU"  wire:model="SKU">
-                                    @error('SKU')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div> 
-                                <div class="mb-3 mt-3">
-                                    <label for="stock_status" class="form-label" " >Stock Status</label>
-                                    <select class="form-control" name="stock_status" wire:model="stock_status">
-                                        <option value="" class="form-control" >Select</option>
-                                        <option value="instock" class="form-control" >InStock</option>
-                                        <option value="outofstock" class="form-control">Out Of Stock</option>
-                                    </select>
-                                    @error('stock_status')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="featured" class="form-label">Featured</label>
-                                    <select class="form-control" name="featured"  wire:model="featured">
-                                        <option value="" class="form-control" >Select</option>
-                                        <option value="0" class="form-control" >No</option>
-                                        <option value="1" class="form-control">Yes</option>
-                                    </select>
-                                    @error('featured')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="quantity" class="form-label">Quantity</label>
-                                    <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity"  wire:model="quantity">
-                                    @error('quantity')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div> 
-                                <div class="mb-3 mt-3">
-                                    <label for="image" class="form-label">Image</label>
-                                    <input type="file" name="image" class="form-control" wire:model="image" >
-                                    @if ($image)
-                                        <img src="{{$image->temporaryUrl()}}" width="120">
-                                    @endif
-                                    @error('image')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div> 
-                                <div class="mb-3 mt-3">
-                                    <label for="category_id " class="form-label">Category</label>
-                                    <select class="form-control" name="category_id " wire:model="category_id" wire:change="changeSubcategory">
-                                        <option value="" class="form-control" >Select Category</option>
-                                        @foreach ($categories as $category )
-                                        <option value="{{$category->id}}" class="form-control" >{{$category->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('category_id')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="category_id " class="form-label">Sub Category</label>
-                                    <select class="form-control" name="scategory_id " wire:model="scategory_id" >
-                                        <option value="0" class="form-control" >Select Sub Category</option>
-                                        @foreach ($scategories as $scategory )
-                                        <option value="{{$scategory->id}}" class="form-control" >{{$scategory->name}}</option>
-                                        @endforeach
-                                    </select>   
-                                    @error('scategory_id')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
+                                <!-- Form Group (email address)-->
                                 
-
+                                <!-- Form Row-->
+                                <div class="row gx-3 mb-3">
+                                    <!-- Form Group (phone number)-->
+                                    <div class="col-md-4">
+                                        <label for="stock_status" class="form-label" " >Stock Status</label>
+                                        <select class="form-control" name="stock_status" wire:model="stock_status">
+                                            <option value="" class="form-control" >Select</option>
+                                            <option value="instock" class="form-control" >InStock</option>
+                                            <option value="outofstock" class="form-control">Out Of Stock</option>
+                                        </select>
+                                        @error('stock_status')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <!-- Form Group (birthday)-->
+                                    <div class="col-md-4">
+                                        <label for="featured" class="form-label">Featured</label>
+                                        <select class="form-control" name="featured"  wire:model="featured">
+                                            <option value="" class="form-control" >Select</option>
+                                            <option value="0" class="form-control" >No</option>
+                                            <option value="1" class="form-control">Yes</option>
+                                        </select>
+                                        @error('featured')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="quantity" class="form-label">Quantity</label>
+                                        <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity"  wire:model="quantity">
+                                        @error('quantity')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="image" class="form-label">Image</label>
+                                        <input type="file" name="image" class="form-control" wire:model="image" >
+                                        @if ($image)
+                                            <img src="{{$image->temporaryUrl()}}" width="120">
+                                        @endif
+                                        @error('image')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="category_id " class="form-label">Category</label>
+                                        <select class="form-control" name="category_id " wire:model="category_id" wire:change="changeSubcategory">
+                                            <option value="" class="form-control" >Select Category</option>
+                                            @foreach ($categories as $category )
+                                            <option value="{{$category->id}}" class="form-control" >{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('category_id')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="category_id " class="form-label">Sub Category</label>
+                                        <select class="form-control" name="scategory_id " wire:model="scategory_id" >
+                                            <option value="0" class="form-control" >Select Sub Category</option>
+                                            @foreach ($scategories as $scategory )
+                                            <option value="{{$scategory->id}}" class="form-control" >{{$scategory->name}}</option>
+                                            @endforeach
+                                        </select>   
+                                        @error('scategory_id')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                                <button type="submit" class="btn btn-primary float-end">Submit</button>
                                </form>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

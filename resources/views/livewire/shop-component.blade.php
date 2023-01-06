@@ -98,7 +98,7 @@
           {{-- < span class="old-price">29 JD</> --}}
       </div>
       <div class="product-action-1 show">
-            @if ($witems->contains($product->id))
+      @if ($witems->contains($product->id))
         <a aria-label="Remove From Wishlist" class="action-btn hover-up Wishlisted" href="#" wire:click.prevent="removeFromWishlist({{ $product->id}})"><i class="fi-rs-heart"></i></a>
         @else
         <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="AddToWishlist({{ $product->id}}, '{{ $product-> name}}','{{ $product-> regular_price}}')"><i class="fi-rs-heart"></i></a>
@@ -155,52 +155,32 @@
               <div class="bt-1 border-color-1"></div>
             </div>
             <div class="single-post clearfix">
-              <div class="image">
-                <img src="{{ asset('assets/imgs/shop/WATCHES-1-1.jpg')}}" alt="#">
+              @foreach ($nproducts as $nproduct )
+              <div class="single-post clearfix">
+                  <div class="image">
+                      <img src="{{asset('assets/imgs/products')}}/{{$nproduct->image}}" alt="#">
+                  </div>
+                  <div class="content pt-10">
+                      <h5><a href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h5>
+                      <p class="price mb-0 mt-5">{{$nproduct->regular_price}} JD</p>
+                      <div class="product-rate">
+                          <div class="product-rating" style="width:90%"></div>
+                      </div>
+                  </div>
               </div>
-              <div class="content pt-10">
-                <h5><a href="product-details.html">Wooden wall clock</a></h5>
-                <p class="price mb-0 mt-5">10 JD</p>
-                <div class="product-rate">
-                  <div class="product-rating" style="width:90%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="single-post clearfix">
-              <div class="image">
-                <img src="{{ asset('assets/imgs/shop/WATCHES-2-1.jpg')}}" alt="#">
-              </div>
-              <div class="content pt-10">
-                <h6><a href="product-details.html">Acrylic wall clock</a></h6>
-                <p class="price mb-0 mt-5">10 JD</p>
-                <div class="product-rate">
-                  <div class="product-rating" style="width:80%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="single-post clearfix">
-              <div class="image">
-                <img src="{{ asset('assets/imgs/shop/WATCHES-3-1.jpg')}}" alt="#">
-              </div>
-              <div class="content pt-10">
-                <h6><a href="product-details.html">Acrylic wall clock</a></h6>
-                <p class="price mb-0 mt-5"> 13 JD</p>
-                <div class="product-rate">
-                  <div class="product-rating" style="width:60%"></div>
-                </div>
-              </div>
+              @endforeach
             </div>
           </div>
+          @foreach ($sproducts as $sproduct)
           <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
-            <img src="{{ asset('assets/imgs/banner/1056829_OLPWSR0.jpg')}}" alt="">
+            <img src="{{asset('assets/imgs/products')}}/{{$sproduct->image}}" alt="">
               <div class="banner-text">
-                <span> Large Murals </span>
+                <span>{{$sproduct->name}} </span>
                 <h4>Save 17% on  <br>Some Murals</h4>
-                <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                <a href="{{route('product.category',['slug'=>$sproduct->category->slug])}}">{{$sproduct->category->name}}<i class="fi-rs-arrow-right"></i></a>
               </div>
-          </div>
-      </div>
-    </div>
+            </div>
+            @endforeach
   </div>
 </section>
       </main >
