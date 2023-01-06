@@ -31,6 +31,10 @@ class AdminEditProductComponent extends Component
     public $category_id;
     public $newimage;
     public $scategory_id; 
+    public $the_quality; 
+    public $encapsulation; 
+    public $size; 
+
 
 
     public function mount($product_id){
@@ -49,6 +53,10 @@ class AdminEditProductComponent extends Component
         $this->image = $product->image;
         $this->category_id = $product->category_id;
         $this->scategory_id = $product->scategory_id;
+        $this->the_quality = $product->the_quality;
+        $this->encapsulation = $product->encapsulation;
+        $this->size = $product->size;
+
     }
 
     public function changeSubcategory(){
@@ -75,7 +83,10 @@ class AdminEditProductComponent extends Component
             'quantity'=> 'required',
             'image'=> 'required',
             'category_id'=> 'required',
-            'scategory_id'=> 'required'
+            'scategory_id'=> 'required',
+            'the_quality'=> 'required',
+            'encapsulation'=> 'required',
+            'size'=> 'required'
         ]);
         
         $product = Product::find($this->product_id);
@@ -89,6 +100,9 @@ class AdminEditProductComponent extends Component
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
+        $product->the_quality = $this->the_quality;
+        $product->encapsulation = $this->encapsulation;
+        $product->size = $this->size;
         if($this->newimage){
             unlink('assets/imgs/products/'.$product->image);
             $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();

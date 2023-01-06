@@ -118,6 +118,29 @@
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div> 
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-4">
+                                        <label for="the_quality" class="form-label">The Quality</label>
+                                        <input type="text" name="the_quality" class="form-control" placeholder="Enter The Quality"  wire:model="the_quality" >
+                                        @error('the_quality')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="encapsulation" class="form-label">Encapsulation</label>
+                                        <input type="text" name="encapsulation" class="form-control" placeholder="Enter Encapsulation"  wire:model="encapsulation">
+                                         @error('encapsulation')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="size" class="form-label">Size</label>
+                                        <input type="text" name="size" class="form-control" placeholder="Enter Size"  wire:model="size">
+                                         @error('size')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="mb-3 mt-3">
                                     <label for="image" class="form-label">Image</label>
                                     <input type="file" name="image" class="form-control" wire:model="newimage" >
@@ -145,7 +168,7 @@
                                 <div class="mb-3 mt-3">
                                     <label for="category_id " class="form-label">Sub Category</label>
                                     <select class="form-control" name="scategory_id " wire:model="scategory_id" >
-                                        <option value="0" class="form-control" >Select Sub Category</option>
+                                        < <option value="0" class="form-control" >Select Sub Category</option>
                                         <option value="0" class="form-control" >No Sub Category</option>
                                         @foreach ($scategories as $scategory )
                                         <option value="{{$scategory->id}}" class="form-control" >{{$scategory->name}}</option>

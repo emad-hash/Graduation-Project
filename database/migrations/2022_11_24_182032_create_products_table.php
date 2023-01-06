@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('short_description')->nullable();
             $table->text('description')->nullable();
+            $table->text('details')->nullable();
+            $table->text('the_quality')->nullable();
+            $table->text('encapsulation')->nullable();
+            $table->text('size')->nullable();
             $table->decimal('regular_price',8,2); 
             $table->decimal('sale_price',8,2)->nullable(); 
             $table->string('SKU');

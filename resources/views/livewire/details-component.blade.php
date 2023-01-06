@@ -242,31 +242,23 @@
                                     <div class="tab-pane fade" id="Additional-info">
                                         <table class="font-md">
                                             <tbody>
-                                                <tr class="stand-up">
-                                                    <th>details</th>
-                                                    <td>
-                                                        <p>MDF wood, thickness of 3 mm, using the latest wood drilling
-                                                            equipment and machines.</p>
-                                                    </td>
-                                                </tr>
                                                 <tr class="folded-w-wheels">
                                                     <th>The Quality</th>
                                                     <td>
-                                                        <p> High quality printable German labels, wipeable or washable.
-                                                        </p>
+                                                        <p>{{$product->the_quality}}</p>
                                                     </td>
                                                 </tr>
 
                                                 <tr class="pa_color">
                                                     <th>Encapsulation</th>
                                                     <td>
-                                                        <p>5mm thickness carton packing Safe shipping process</p>
+                                                        <p>{{$product->encapsulation}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr class="pa_size">
                                                     <th>Size</th>
                                                     <td>
-                                                        <p>120X80</p>
+                                                        <p>{{$product->size}}</p>
                                                     </td>
                                                 </tr>
                                             </tbody>

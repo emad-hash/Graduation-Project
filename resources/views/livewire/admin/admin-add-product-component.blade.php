@@ -99,11 +99,33 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <!-- Form Group (email address)-->
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-4">
+                                        <label for="the_quality" class="form-label">The Quality</label>
+                                        <input type="text" name="the_quality" class="form-control" placeholder="Enter The Quality"  wire:model="the_quality" >
+                                        @error('the_quality')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="encapsulation" class="form-label">Encapsulation</label>
+                                        <input type="text" name="encapsulation" class="form-control" placeholder="Enter Encapsulation"  wire:model="encapsulation">
+                                         @error('encapsulation')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="size" class="form-label">Size</label>
+                                        <input type="text" name="size" class="form-control" placeholder="Enter Size"  wire:model="size">
+                                         @error('size')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                          
                                 
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
-                                    <!-- Form Group (phone number)-->
                                     <div class="col-md-4">
                                         <label for="stock_status" class="form-label" " >Stock Status</label>
                                         <select class="form-control" name="stock_status" wire:model="stock_status">

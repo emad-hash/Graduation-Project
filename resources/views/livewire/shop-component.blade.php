@@ -95,7 +95,7 @@
         </div>
         <div class="product-price">
           <span>{{ $product->regular_price}} JD</span>
-          {{-- < span class="old-price">29 JD</> --}}
+          <span class="old-price">{{ $product->sale_price}} JD</span>
       </div>
       <div class="product-action-1 show">
       @if ($witems->contains($product->id))
