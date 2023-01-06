@@ -190,7 +190,7 @@
                                         </div>
                                         <div class="bt-1 border-color-1 mt-15 mb-15"></div>
                                         <div class="short-desc mb-30">
-                                            <p>{{$product->short_description}}</p>
+                                            <p>{!!$product->short_description!!}</p>
                                         </div>
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
@@ -227,42 +227,14 @@
                                         <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Additional info</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews ({{$product->orderItems->where('rstatus',1)->count()}})</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
                                     <div class="tab-pane fade show active" id="Description">
                                         <div class="">
-                                           {{$product->description}}
+                                           {!!$product->description!!}
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="Additional-info">
-                                        <table class="font-md">
-                                            <tbody>
-                                                <tr class="folded-w-wheels">
-                                                    <th>The Quality</th>
-                                                    <td>
-                                                        <p>{{$product->the_quality}}</p>
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="pa_color">
-                                                    <th>Encapsulation</th>
-                                                    <td>
-                                                        <p>{{$product->encapsulation}}</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="pa_size">
-                                                    <th>Size</th>
-                                                    <td>
-                                                        <p>{{$product->size}}</p>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                     <div class="tab-pane fade" id="Reviews">
                                         <!--Comments-->

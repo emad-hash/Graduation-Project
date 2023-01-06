@@ -28,9 +28,6 @@ class AdminAddProductComponent extends Component
     public $featured;
     public $quantity;
     public $image;
-    public $the_quality;
-    public $encapsulation;
-    public $size;
     public $category_id;
     public $scategory_id; 
     
@@ -58,11 +55,7 @@ class AdminAddProductComponent extends Component
             'quantity'=> 'required',
             'image'=> 'required',
             'category_id'=> 'required',
-            'scategory_id'=> 'required',
-            'the_quality'=> 'required',
-            'encapsulation'=> 'required',
-            'size'=> 'required'
-
+            'scategory_id'=> 'required'
         ]);
         $product = new Product();
         $product->name = $this->name;
@@ -75,9 +68,6 @@ class AdminAddProductComponent extends Component
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
-        $product->the_quality = $this->the_quality;
-        $product->encapsulation = $this->encapsulation;
-        $product->size = $this->size;
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('products',$imageName);
         $product->image = $imageName;

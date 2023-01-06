@@ -61,6 +61,9 @@
     <x-livewire-alert::scripts />
     <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script> 
     <x-livewire-alert::flash />
+
+
+    <script src="https://cdn.tiny.cloud/1/3ul9d2n9i9v862qmzgrx57kifxtxxy49hb9hlrsxfz1twl8q/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </body>
 
 </html>

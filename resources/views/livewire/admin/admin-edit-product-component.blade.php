@@ -53,16 +53,16 @@
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
-                                <div class="mb-3 mt-3">
+                                <div class="mb-3 mt-3" wire:ignore>
                                     <label for="short_description" class="form-label">Short Description</label>
-                                    <textarea type="text" name="short_description" class="form-control" placeholder="Enter Short  Description" wire:model="short_description" ></textarea>
+                                    <textarea type="text" name="short_description" id="short_description"  class="form-control" placeholder="Enter Short  Description" wire:model="short_description" ></textarea>
                                     @error('short_description')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
-                                <div class="mb-3 mt-3">
+                                <div class="mb-3 mt-3" wire:ignore>
                                     <label for="description" class="form-label"> Description</label>
-                                    <textarea type="text" name="description" class="form-control" placeholder="Enter  Description"wire:model="description"></textarea>
+                                    <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter  Description"wire:model="description"></textarea>
                                     @error('description')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
@@ -118,29 +118,6 @@
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div> 
-                                <div class="row gx-3 mb-3">
-                                    <div class="col-md-4">
-                                        <label for="the_quality" class="form-label">The Quality</label>
-                                        <input type="text" name="the_quality" class="form-control" placeholder="Enter The Quality"  wire:model="the_quality" >
-                                        @error('the_quality')
-                                            <p class="text-danger">{{$message}}</p>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="encapsulation" class="form-label">Encapsulation</label>
-                                        <input type="text" name="encapsulation" class="form-control" placeholder="Enter Encapsulation"  wire:model="encapsulation">
-                                         @error('encapsulation')
-                                        <p class="text-danger">{{$message}}</p>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="size" class="form-label">Size</label>
-                                        <input type="text" name="size" class="form-control" placeholder="Enter Size"  wire:model="size">
-                                         @error('size')
-                                        <p class="text-danger">{{$message}}</p>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <div class="mb-3 mt-3">
                                     <label for="image" class="form-label">Image</label>
                                     <input type="file" name="image" class="form-control" wire:model="newimage" >
@@ -190,3 +167,31 @@
         </section>
     </main>
 </div>
+
+@push('scripts')
+    <script>
+        $(function(){
+            tinymce.init({
+                selector:'#short_description',
+                setup:function(editor){
+                    editor.on('Change',function(e){
+                        tinyMCE.triggerSave();
+                        var sd_data = $('#short_description').val();
+                        @this.set('short_description',sd_data);
+                    });
+                }
+            });
+
+            tinymce.init({
+                selector:'#description',
+                setup:function(editor){
+                    editor.on('Change',function(e){
+                        tinyMCE.triggerSave();
+                        var d_data = $('#description').val();
+                        @this.set('description',d_data);
+                    });
+                }
+            });
+        });
+    </script>
+@endpush
