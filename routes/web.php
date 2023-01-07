@@ -24,6 +24,7 @@ use App\Http\Livewire\User\UserProfileComponent;
 use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
+use App\Http\Livewire\Admin\AdminTrashedComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminSettingsComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
@@ -120,6 +121,7 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/order/{order_id}',AdminOrderDetailsComponent::class)->name('admin.order.details');
     Route::get('/admin/contactmassege',AdminContactComponent::class)->name('admin.contactmassege');
     Route::get('/admin/setting',AdminSettingsComponent::class)->name('admin.setting');
+    Route::get('/admin/trashed',AdminTrashedComponent::class)->name('admin.trashed');
 
 
    });
