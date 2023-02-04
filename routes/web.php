@@ -41,6 +41,8 @@ use App\Http\Livewire\Admin\AdminAddCategoriesComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminEditCategoriesComponent;
 use App\Http\Livewire\Admin\AdminEditHomeSliderComponent;
+use App\Http\Livewire\Admin\Adminviewuser;
+
 // use Illuminate\Routing\Exceptions\UrlGenerationException;
 
 /*
@@ -98,8 +100,8 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
  Route::get('/user/order',UserOrderComponent::class)->name('user.order');
  Route::get('/user/order/{order_id}',UserOrderDetailsComponent::class)->name('user.order.details');
  Route::get('/user/review/{order_item_id}',UserReviewComponent::class)->name('user.reviews');
- Route::get('/user/changepassword',UserChangeComponent::class)->name('user.changepassword');  
- Route::get('/user/profile',UserProfileComponent::class)->name('user.profile');    
+ Route::get('/user/changepassword',UserChangeComponent::class)->name('user.changepassword');
+ Route::get('/user/profile',UserProfileComponent::class)->name('user.profile');
  Route::get('/user/edit',UserEditProfileComponent::class)->name('user.profile_edit');
 
 });
@@ -121,6 +123,8 @@ Route::middleware(['auth','authadmin'])->group(function(){
     Route::get('/admin/order/{order_id}',AdminOrderDetailsComponent::class)->name('admin.order.details');
     Route::get('/admin/contactmassege',AdminContactComponent::class)->name('admin.contactmassege');
     Route::get('/admin/setting',AdminSettingsComponent::class)->name('admin.setting');
+    Route::get('/admin/user',Adminviewuser::class)->name('admin.user');
+
 
 
    });

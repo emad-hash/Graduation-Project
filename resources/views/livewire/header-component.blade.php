@@ -26,16 +26,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4">                         
+                    <div class="col-xl-3 col-lg-4">
                         <div class="header-info header-info-right">
                             @auth
                             <ul>
-     <li><i class="fi-rs-key"></i>{{Auth::user()->name}} / 
+     <li><i class="fi-rs-key"></i>{{Auth::user()->name}} /
          <form  method="POST" action="{{route('logout')}}">
             @csrf
     <a href="{{route('logout')}}" onclick="event.prevrntDefault(); this.closest('form').submit();">Logout</a>
-   </form> 
-    </li> 
+   </form>
+    </li>
                             </ul>
                               @else
                             <ul>
@@ -80,7 +80,7 @@
                             <div class="categori-dropdown-wrap categori-dropdown-active-large">
                                 <ul>
                                     @foreach ( $categories as $category )
-                                        
+
                                     <li class="{{count($category->subCategories) > 0 ? 'has-children':''}}">
                                         <a href="{{route('product.category',['slug'=>$category->slug])}}"><i class="surfsidemedia-font-dress"></i>{{ $category-> name}}</a>
                                         @if(count($category->subCategories)>0)
@@ -97,7 +97,7 @@
                                                                 @endforeach
                                                             </ul>
                                                         </li>
-                                                        
+
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -115,7 +115,7 @@
                                     <li><a class="{{str_contains(Request::url(), '/') ? 'active' : ''}}" href="{{route('home.index')}}">Home </a></li>
                                     <li><a class="{{str_contains(Request::url(), '/about') ? 'active' : ''}}" href="{{route('about.index')}}">About</a></li>
                                     <li><a class="{{str_contains(Request::url(), '/shop') ? 'active' : ''}}" href="/shop">Shop</a></li>
-                                    
+
                                     <li class="position-static"><a href="#">Our Collections <i
                                                 class="fi-rs-angle-down"></i></a>
                                         <ul class="mega-menu">
@@ -129,11 +129,11 @@
                                                     @endforeach
                                                 </ul>
                                         @endif
-                                            </li>  
-                                            @endforeach                                          
+                                            </li>
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    
+
                                     <li><a class="{{str_contains(Request::url(), '/contact') ? 'active' : ''}}" href="/contact">Contact</a></li>
                                     @auth
                                     @if(Auth::user()->utype == 'ADM')
@@ -147,7 +147,7 @@
                                             <li><a href="{{route('admin.order')}}">All Orders</a></li>
                                             <li><a href="{{route('admin.contactmassege')}}">All Comment</a></li>
                                             <li><a href="{{route('admin.setting')}}">Settings</a></li>
-                                            <li><a href="#">Customers</a></li>
+                                            <li><a href="{{route('admin.user')}}">All User</a></li>
                                             <li><a href="{{route('logout')}}" onclick="event.prevrntDefault(); this.closest('form').submit();">Logout</a></li>
                                         </ul>
                                         @else
@@ -159,7 +159,7 @@
                                                 <li><a href="{{route('user.changepassword')}}">Change Password</a></li>
                                                 <li><a href="{{route('logout')}}" onclick="event.prevrntDefault(); this.closest('form').submit();">Logout</a></li>
                                         @endif
-                                      
+
                                     </li>
                                     @endif
                                 </ul>
@@ -169,7 +169,7 @@
                     <div class="hotline d-none d-lg-block">
                         <p><i class="fi-rs-smartphone"></i><span>Call Us</span> (+962) {{$setting->phone}} </p>
                     </div>
-                    
+
                     <div class="header-action-right d-block d-lg-none">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
@@ -308,17 +308,17 @@
                                             <li><a href="product-details.html">Arcylic Watches</a></li>
                                             <li><a href="product-details.html">Wooden Decorative Clocks</a></li>
                                             <li><a href="product-details.html">Sticker Watches</a></li>
-                                            
+
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                           
+
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
                                 <ul class="dropdown">
                                     <li><a href="#">English</a></li>
                                     <li><a href="#">Arabic</a></li>
-                                    
+
                                 </ul>
                             </li>
                         </ul>
